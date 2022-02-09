@@ -35,11 +35,6 @@ export default function Layout({ pageTitle, children, className }) {
               </Link>
             </li>
             <li className="NavLink__Item">
-              <Link to="/about" className="NavLink__Link">
-                About
-              </Link>
-            </li>
-            <li className="NavLink__Item">
               <Link to="/blog" className="NavLink__Link">
                 Blog
               </Link>

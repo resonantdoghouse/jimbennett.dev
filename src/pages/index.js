@@ -14,7 +14,7 @@ const IndexPage = () => {
     <Layout pageTitle={'home'}>
       <title>Home Page</title>
       <h1 style={headingStyles}>Welcome to my blog</h1>
-      <p>a bit about this blog.</p>
+      <p>Just getting started.</p>
     </Layout>
   );
 };

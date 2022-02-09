@@ -2,8 +2,8 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.yourdomain.tld',
-    title: 'GatsBlog',
+    siteUrl: 'https://jimbennett.dev',
+    title: 'Jim Bennett Dev',
   },
   plugins: [
     'gatsby-plugin-styled-components',
