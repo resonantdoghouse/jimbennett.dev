@@ -12,6 +12,12 @@ const GlobalStyle = createGlobalStyle`
     font-family: Open-Sans, Helvetica, Sans-Serif;
   }
 
+  .social-links {
+    padding: 0.625rem;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
   .logo {
     color: white;
     text-decoration: none;

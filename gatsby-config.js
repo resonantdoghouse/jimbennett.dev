@@ -6,6 +6,7 @@ module.exports = {
     title: 'Jim Bennett Dev',
   },
   plugins: [
+    'gatsby-plugin-fontawesome-css',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
