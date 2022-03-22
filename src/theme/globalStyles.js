@@ -19,6 +19,18 @@ const GlobalStyle = createGlobalStyle`
     display: inline-flex;
     align-items: center;
   }
+
+  .link {
+    color: dark-magenta;
+    text-decoration: none;
+  }
+
+  .article {
+    padding: 0.625rem;
+    margin: 0 0 2.5rem;
+    border-radius: 0.625rem;
+    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.26);
+  }
 `;
 
 export default GlobalStyle;

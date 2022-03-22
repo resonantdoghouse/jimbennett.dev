@@ -2,23 +2,15 @@ import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { MDXProvider } from '@mdx-js/react';
-// import { CodePen, Gist } from 'mdx-embed';
-// import CodeBlock from '../components/code-block';
 import Layout from '../components/layout';
-
-// const components = {
-//   CodePen,
-//   Gist,
-//   pre: CodeBlock,
-// };
 
 const BlogPage = ({ data }) => {
   return (
     <Layout pageTitle="My Blog Posts">
       {data.allMdx.nodes.map((node) => {
         return (
-          <article key={node.id}>
-            <Link to={`/blog/${node.slug}`}>
+          <article key={node.id} className="article">
+            <Link to={`/blog/${node.slug}`} className="link">
               <h2>{node.frontmatter.title}</h2>
               {node.frontmatter.featuredImage && (
                 <Img
@@ -53,7 +45,6 @@ export const query = graphql`
         }
         id
         slug
-        body
         excerpt(pruneLength: 250)
         fileAbsolutePath
       }
