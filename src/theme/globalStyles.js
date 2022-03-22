@@ -13,9 +13,16 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .social-links {
-    padding: 0.625rem;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    padding: 0.625rem;
+    margin: 0.625rem auto;
+    border-radius: 0.625rem;
+    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.26);
+  }
+
+  .social-links__link {
+    margin: 0 0.625rem;
   }
 
   .logo {

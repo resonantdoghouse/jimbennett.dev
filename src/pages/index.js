@@ -29,10 +29,13 @@ const IndexPage = () => {
       <h1 style={headingStyles}>Welcome to my site</h1>
       <p>Just getting started.</p>
       <nav className="social-links">
-        <Link to="https://github.com/resonantdoghouse">
+        <Link
+          to="https://github.com/resonantdoghouse"
+          className="social-links__link"
+        >
           <FontAwesomeIcon icon={faGithub} size="2x" />
         </Link>
-        <Link to="https://codepen.io/jimbennett">
+        <Link to="https://codepen.io/jimbennett" className="social-links__link">
           <FontAwesomeIcon icon={faCodepen} size="2x" />
         </Link>
       </nav>

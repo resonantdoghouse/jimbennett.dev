@@ -24,7 +24,9 @@ export default styled(Layout)`
   }
 
   .Nav {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .NavLinks {
