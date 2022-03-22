@@ -2,15 +2,15 @@ import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { MDXProvider } from '@mdx-js/react';
-import { CodePen, Gist } from 'mdx-embed';
-import CodeBlock from '../components/code-block';
+// import { CodePen, Gist } from 'mdx-embed';
+// import CodeBlock from '../components/code-block';
 import Layout from '../components/layout';
 
-const components = {
-  CodePen,
-  Gist,
-  pre: CodeBlock,
-};
+// const components = {
+//   CodePen,
+//   Gist,
+//   pre: CodeBlock,
+// };
 
 const BlogPage = ({ data }) => {
   return (
