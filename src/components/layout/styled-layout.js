@@ -7,6 +7,7 @@ export default styled(Layout)`
 
   .Container {
     margin: auto;
+    width: 100%;
     max-width: 720px;
     font-family: sans-serif;
   }

@@ -14,7 +14,7 @@ const components = {
 
 const BlogPost = ({ data }) => {
   return (
-    <Layout pageTitle="Super Cool Blog Posts">
+    <Layout pageTitle="blog">
       <MDXProvider components={components}>
         <MDXRenderer>{data.mdx.body}</MDXRenderer>
       </MDXProvider>
