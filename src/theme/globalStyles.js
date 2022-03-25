@@ -34,8 +34,24 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .link {
-    color: dark-magenta;
+    color: rebeccapurple;
     text-decoration: none;
+  }
+
+  .link:hover {
+    color: darkorchid;
+  }
+
+  .link:visited {
+    color: rebeccapurple;
+  }
+
+  .link h2 {
+    color: inherit;
+  }
+
+  .link:hover h2 {
+     color: inherit;
   }
 
   .article {
