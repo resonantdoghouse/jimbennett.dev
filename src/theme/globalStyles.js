@@ -63,7 +63,7 @@ const GlobalStyle = createGlobalStyle`
 
   .iframe {
     width: 100%;
-    min-height: 400px;
+    min-height: 500px;
     margin: auto;
   }
 `;
