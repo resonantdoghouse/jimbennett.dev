@@ -1,18 +1,19 @@
 import * as React from 'react';
+import { Link } from 'gatsby';
 import Layout from '../components/layout';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faCodepen } from '@fortawesome/free-brands-svg-icons';
+import {
+  faGithub,
+  faCodepen,
+  faLinkedin,
+} from '@fortawesome/free-brands-svg-icons';
 
-// import {
-//   faCoffee,
-//   faAddressBook,
-//   faAirFreshener,
-//   faAmbulance,
-//   faAtom,
-//   faBus,
-//   faCoins,
-//   faDice,
-// } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPaw,
+  faCode,
+  faChalkboardTeacher,
+  faMusic,
+} from '@fortawesome/free-solid-svg-icons';
 
 const headingStyles = {
   display: 'inline-flex',
@@ -27,25 +28,46 @@ const IndexPage = () => {
     <Layout pageTitle={'home'}>
       <title>Home Page</title>
       <h1 style={headingStyles}>Welcome to my site</h1>
-      <p>Just getting started.</p>
-      <nav className="social-links">
+      <p>
+        My name is Jim and I'm a web developer{' '}
+        <FontAwesomeIcon icon={faCode} size="1x" />, educator{' '}
+        <FontAwesomeIcon icon={faChalkboardTeacher} size="1x" />, musician{' '}
+        <FontAwesomeIcon icon={faMusic} size="1x" />, cat-dad{' '}
+        <FontAwesomeIcon icon={faPaw} size="1x" />.
+      </p>
+      <p>
+        You can see some of my 'work' in the <Link to="/blog">blog</Link>{' '}
+        section of this site. The blog contains hobby/passion projects, things I
+        work on in my spare time, as well as some write-ups about how projects
+        are coded such as{' '}
+        <Link to="/blog/creating-sound-with-tonejs">Tone.js</Link>.
+      </p>
+      <p>
+        If you'd like to connect here are a few ways:{' '}
         <a
           href="https://github.com/resonantdoghouse"
-          className="social-links__link"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FontAwesomeIcon icon={faGithub} size="2x" />
+          GitHub <FontAwesomeIcon icon={faGithub} size="1x" />
         </a>
+        ,{' '}
         <a
           href="https://codepen.io/jimbennett"
-          className="social-links__link"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FontAwesomeIcon icon={faCodepen} size="2x" />
+          CodePen <FontAwesomeIcon icon={faCodepen} size="1x" />
         </a>
-      </nav>
+        ,{' '}
+        <a
+          href="https://www.linkedin.com/in/jim-bennett/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn <FontAwesomeIcon icon={faLinkedin} size="1x" />
+        </a>
+      </p>
     </Layout>
   );
 };
