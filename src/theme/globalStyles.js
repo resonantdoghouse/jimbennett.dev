@@ -60,6 +60,12 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 0.625rem;
     box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.26);
   }
+
+  .iframe {
+    width: 100%;
+    min-height: 400px;
+    margin: auto;
+  }
 `;
 
 export default GlobalStyle;
