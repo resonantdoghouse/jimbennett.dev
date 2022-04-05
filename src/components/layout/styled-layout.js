@@ -13,14 +13,19 @@ export default styled(Layout)`
   }
 
   .SiteHeader {
-    color: white;
     background: rebeccapurple;
-    padding: 0.625rem;
     width: 100%;
+    color: white;
+  }
+
+  .SiteHeader__wrapper {
+    padding: 0.625rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: white;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
   }
 
   .Nav {
@@ -46,6 +51,7 @@ export default styled(Layout)`
     padding: 0.625rem;
     display: inline-flex;
     text-decoration: none;
+    color: white;
   }
 
   .SiteTitle {

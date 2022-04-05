@@ -4,6 +4,7 @@ import SearchBox from './search-box';
 const open = css`
   width: 10rem;
   background: ${({ theme }) => theme.background};
+  color: black;
   cursor: text;
   margin-left: -1.6rem;
   padding-left: 1.6rem;
@@ -12,6 +13,7 @@ const open = css`
 const closed = css`
   width: 0;
   background: transparent;
+  color: white;
   cursor: pointer;
   margin-left: -1rem;
   padding-left: 1rem;
@@ -39,7 +41,7 @@ export default styled(SearchBox)`
   .SearchIcon {
     width: 1rem;
     margin: 0.3rem;
-    color: ${({ theme }) => theme.foreground};
+    cursor: pointer;
     pointer-events: none;
   }
 `;
