@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
+import Helmet from 'react-helmet';
 import Search from '../search';
 import GlobalStyle from '../../theme/globalStyles';
 const searchIndices = [{ name: `blog`, title: `blog` }];
@@ -19,15 +20,16 @@ export default function Layout({ pageTitle, children, className }) {
     <div className={className}>
       <GlobalStyle />
       <div>
-        <title>
-          {pageTitle} | {data.site.siteMetadata.title}
-        </title>
+        <Helmet>
+          <title>
+            {pageTitle} | {data.site.siteMetadata.title}
+          </title>
+        </Helmet>
         <header className="SiteHeader">
           <div className="SiteHeader__wrapper">
             <Link to={'/'} className="logo">
               {data.site.siteMetadata.title}{' '}
             </Link>
-
             <nav className="Nav">
               <ul className="NavLinks">
                 <li className="NavLink__Item">
