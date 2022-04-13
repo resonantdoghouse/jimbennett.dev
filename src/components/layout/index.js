@@ -1,6 +1,8 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import StyledLayout from './styled-layout';
+import LogRocket from 'logrocket';
+LogRocket.init('fskgrn/personal-site');
 
 const theme = {
   foreground: '#050505',
