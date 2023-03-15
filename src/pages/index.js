@@ -1,19 +1,6 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 import Layout from '../components/layout';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faGithub,
-  faCodepen,
-  faLinkedin,
-} from '@fortawesome/free-brands-svg-icons';
-
-import {
-  faPaw,
-  faCode,
-  faChalkboardTeacher,
-  faMusic,
-} from '@fortawesome/free-solid-svg-icons';
 
 const headingStyles = {
   display: 'inline-flex',
@@ -28,11 +15,8 @@ const IndexPage = () => {
     <Layout pageTitle={'home'}>
       <h1 style={headingStyles}>Hello, World! 👋</h1>
       <p>
-        My name is Jim Bennett and I'm a Web Developer{' '}
-        <FontAwesomeIcon icon={faCode} size="1x" />, educator{' '}
-        <FontAwesomeIcon icon={faChalkboardTeacher} size="1x" />, musician{' '}
-        <FontAwesomeIcon icon={faMusic} size="1x" />, and cat-dad{' '}
-        <FontAwesomeIcon icon={faPaw} size="1x" /> based in Vancouver, BC.
+        My name is Jim Bennett and I'm a Web Developer, educator, musician, and
+        cat-dad based in Vancouver, BC.
       </p>
       <p>
         You can see some of my 'work' in the{' '}
@@ -55,7 +39,7 @@ const IndexPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          GitHub <FontAwesomeIcon icon={faGithub} size="1x" />
+          GitHub
         </a>
         ,{' '}
         <a
@@ -64,7 +48,7 @@ const IndexPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          CodePen <FontAwesomeIcon icon={faCodepen} size="1x" />
+          CodePen
         </a>
         ,{' '}
         <a
@@ -73,7 +57,7 @@ const IndexPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          LinkedIn <FontAwesomeIcon icon={faLinkedin} size="1x" />
+          LinkedIn
         </a>
       </p>
     </Layout>
