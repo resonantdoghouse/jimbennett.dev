@@ -13,9 +13,10 @@ export default styled(Layout)`
   }
 
   .SiteHeader {
-    background: rebeccapurple;
+    background: #344e41;
     width: 100%;
     color: white;
+    margin-bottom: 0.625rem;
   }
 
   .SiteHeader__wrapper {

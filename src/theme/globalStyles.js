@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .logo {
-    color: white;
+    color: #fff;
     text-decoration: none;
     padding: 0.625rem;
     display: inline-flex;
@@ -34,16 +34,16 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .link {
-    color: rebeccapurple;
+    color: #3a5a40;
     text-decoration: none;
   }
 
   .link:hover {
-    color: darkorchid;
+    color: #344e41;
   }
 
   .link:visited {
-    color: rebeccapurple;
+    color: #3a5a40;
   }
 
   .link h2 {
@@ -66,6 +66,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 500px;
     margin: auto;
   }
+
 `;
 
 export default GlobalStyle;
