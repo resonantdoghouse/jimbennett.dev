@@ -1,0 +1,21 @@
+@use './styles/placeholders.scss';
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  @extend %wrapper;
+  flex-grow: 1;
+}
+
+.connect-list {
+  &__item {
+  }
+  &__link {
+    text-decoration: none;
+    color: var(--color-secondary);
+  }
+}

@@ -1,0 +1,10 @@
+@use '../../styles/placeholders.scss';
+
+.AppFooter {
+  background: var(--color-primary);
+  color: var(--color-light);
+  padding: 0.625rem;
+  &__wrapper {
+    @extend %wrapper;
+  }
+}
