@@ -26,7 +26,6 @@ const headingStyles = {
 const IndexPage = () => {
   return (
     <Layout pageTitle={'home'}>
-      {/* <title>Home Page</title> */}
       <h1 style={headingStyles}>Hello, World! 👋</h1>
       <p>
         My name is Jim Bennett and I'm a Web Developer{' '}

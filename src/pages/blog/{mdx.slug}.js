@@ -5,12 +5,10 @@ import { MDXProvider } from '@mdx-js/react';
 import { CodePen, Gist } from 'mdx-embed';
 import Layout from '../../components/layout';
 import CodeBlock from '../../components/code-block.jsx';
-import Btn from '../../components/Btn'; // test import, delete later!
 
 const components = {
   CodePen,
   Gist,
-  Btn,
   pre: CodeBlock,
 };
 
