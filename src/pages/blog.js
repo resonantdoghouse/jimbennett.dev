@@ -20,7 +20,9 @@ const BlogPage = ({ data }) => {
             </Link>
             <MDXProvider>{node.excerpt}</MDXProvider>
             <br />
-            <Link to={`/blog/${node.slug}`}>read more</Link>
+            <Link className="link link--read-more" to={`/blog/${node.slug}`}>
+              read more
+            </Link>
           </article>
         );
       })}

@@ -8,7 +8,8 @@ export default styled(Layout)`
   .Container {
     margin: auto;
     width: 100%;
-    max-width: 720px;
+    max-width: 980px;
+    padding: 0.625rem;
     font-family: sans-serif;
   }
 
@@ -25,7 +26,7 @@ export default styled(Layout)`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 720px;
+    max-width: 980px;
     margin: 0 auto;
   }
 

@@ -54,10 +54,25 @@ const GlobalStyle = createGlobalStyle`
      color: inherit;
   }
 
+  .link--read-more {
+    background: #3a5a40;
+    color: #fff;
+    padding: 0.625rem;
+    display: inline-flex;
+  }
+
+  .link--read-more:hover {
+    background: #344e41;
+    color: #fff;
+  }
+
+  .link--read-more:visited {
+    color: #fff;
+  }
+
   .article {
     padding: 0.625rem;
     margin: 0 0 2.5rem;
-    border-radius: 0.625rem;
     box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.26);
   }
 
