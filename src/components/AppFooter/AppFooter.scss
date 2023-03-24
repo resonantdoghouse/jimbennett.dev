@@ -1,6 +1,9 @@
 @use '../../styles/placeholders.scss';
 
 .AppFooter {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   background: var(--color-primary);
   color: var(--color-light);
   padding: 0.625rem;
