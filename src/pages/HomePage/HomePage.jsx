@@ -1,4 +1,5 @@
 import { ReactP5Wrapper } from 'react-p5-wrapper';
+import './HomePage.scss';
 
 const sketch = (p5) => {
   const generateTerrain = () => {
@@ -34,6 +35,13 @@ const sketch = (p5) => {
   };
 };
 
-const HomePage = () => <ReactP5Wrapper sketch={sketch} />;
+const HomePage = () => (
+  <>
+    <div className="overlay">
+      <h1 className="overlay__title">Hello, World 👋</h1>
+    </div>
+    <ReactP5Wrapper sketch={sketch} />
+  </>
+);
 
 export default HomePage;

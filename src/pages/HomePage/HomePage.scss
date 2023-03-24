@@ -1,0 +1,12 @@
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &__title {
+    letter-spacing: 1px;
+    background: var(--color-dark);
+    color: var(--color-light);
+    padding: 2.5rem 3.625rem;
+  }
+}
