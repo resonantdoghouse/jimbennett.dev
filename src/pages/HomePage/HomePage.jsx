@@ -12,11 +12,11 @@ const sketch = (p5) => {
         if (c > 170) {
           p5.fill(255, 255, 255); // mountain top
         } else if (c > 130) {
-          p5.fill(10, 10, 65); // mountain
+          p5.fill(43, 45, 66); // mountain
         } else if (c > 76) {
-          p5.fill(30, 200, 64); // grass
+          p5.fill(0, 111, 50); // grass
         } else {
-          p5.fill(0, 60, 255); // water
+          p5.fill(69, 123, 157); // water
         }
         p5.rect(x, y, 10, 10); // draw shape
       }
@@ -25,9 +25,9 @@ const sketch = (p5) => {
 
   p5.setup = () => {
     p5.createCanvas(window.innerWidth, window.innerHeight);
-    p5.noLoop();
     p5.background(0);
     p5.noStroke();
+    p5.noLoop();
   };
 
   p5.draw = () => {
