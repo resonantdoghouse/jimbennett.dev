@@ -5,10 +5,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+  background: var(--color-dark);
+  border-radius: 4px;
   &__title {
     letter-spacing: 1px;
-    background: var(--color-dark);
-    opacity: 0.85;
     color: var(--color-light);
     padding: 2.5rem 3.625rem;
   }
