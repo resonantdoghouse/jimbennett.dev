@@ -1,7 +1,7 @@
 @use '../../styles/mixins.scss';
 
 .ContactPage {
-  background: linear-gradient(rgba(255, 255, 255, 1), 90%, rgba(0, 0, 0, 0.1));
+  background: linear-gradient(rgba(255, 255, 255, 1), 85%, rgba(0, 0, 0, 0.1));
   width: 100%;
   @include mixins.flex(row, center, center);
 }
@@ -11,11 +11,11 @@
   $self: &;
   &__item {
     border: 1px solid #cbcbcb;
-    background: #f1f1f1;
+    background: #f8f8f8;
     border-radius: 3px;
     transition: 0.25s;
     margin: 0.25rem;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
     display: inline-flex;
     &:hover {
       background: #fff;

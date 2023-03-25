@@ -8,10 +8,13 @@
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
   background: var(--color-dark);
   border-radius: 4px;
+  @include mixins.flex(column);
+  padding: 0.625rem;
   &__title {
     letter-spacing: 1px;
     color: var(--color-light);
-    padding: 2.5rem 3.625rem;
+    margin: 0;
+    padding: 0.625rem;
   }
 }
 

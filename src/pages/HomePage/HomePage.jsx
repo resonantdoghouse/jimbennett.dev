@@ -8,7 +8,7 @@ const HomePage = () => (
     <div className="overlay">
       <h1 className="overlay__title">Hello, World 👋</h1>
       <Link to="/contact" className="Link">
-        Contact
+        Connect with me
       </Link>
     </div>
     <ReactP5Wrapper sketch={sketch} />
