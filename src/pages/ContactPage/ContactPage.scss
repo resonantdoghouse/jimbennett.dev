@@ -1,7 +1,29 @@
+@use '../../styles/mixins.scss';
+
+.ContactPage {
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 1));
+  width: 100%;
+  @include mixins.flex(row, center, center);
+}
+
 .connect-list {
+  @include mixins.flex(column, flex-start);
+  $self: &;
   &__item {
+    border: 1px solid #cbcbcb;
+    background: #f1f1f1;
+    border-radius: 3px;
+    transition: 0.25s;
+    margin: 0.25rem;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+    display: inline-flex;
+    &:hover {
+      background: #fff;
+      box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.25);
+    }
   }
   &__link {
+    padding: 0.7rem 1.1rem;
     text-decoration: none;
     color: var(--color-secondary);
   }

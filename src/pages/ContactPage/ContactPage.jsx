@@ -1,8 +1,8 @@
-import './ContactPage.scss';
+import './ContactPage.scss'
 
 const ContactPage = () => (
-  <>
-    <p>Connect with me.</p>
+  <section className="ContactPage">
+    <h1>Connect with me &rarr;</h1>
     <ul className="connect-list">
       <li className="connect-list__item">
         <a
@@ -32,7 +32,7 @@ const ContactPage = () => (
         </a>
       </li>
     </ul>
-  </>
-);
+  </section>
+)
 
-export default ContactPage;
+export default ContactPage

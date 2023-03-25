@@ -2,17 +2,8 @@
 
 .App {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  width: 100vw;
   min-height: 100vh;
   background: #ccc;
-}
-
-.main {
-  @extend %wrapper;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
 }

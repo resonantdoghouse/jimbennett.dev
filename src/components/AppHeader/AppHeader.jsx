@@ -1,5 +1,5 @@
-import { Link, NavLink } from 'react-router-dom';
-import './AppHeader.scss';
+import { Link, NavLink } from 'react-router-dom'
+import './AppHeader.scss'
 
 const AppHeader = () => (
   <header className="AppHeader">
@@ -22,11 +22,11 @@ const AppHeader = () => (
           }
           to="/contact"
         >
-          contact
+          Contact
         </NavLink>
       </nav>
     </div>
   </header>
-);
+)
 
-export default AppHeader;
+export default AppHeader

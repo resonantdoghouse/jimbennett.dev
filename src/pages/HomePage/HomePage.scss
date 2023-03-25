@@ -11,3 +11,22 @@
     padding: 2.5rem 3.625rem;
   }
 }
+
+.Link {
+  padding: 0.7rem 1.1rem;
+  text-decoration: none;
+  color: var(--color-secondary);
+  border: 1px solid #cbcbcb;
+  background: #000;
+  color: #fff;
+  border-radius: 3px;
+  transition: 0.25s;
+  margin: 0.25rem;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+  display: inline-flex;
+  &:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.25);
+  }
+}
