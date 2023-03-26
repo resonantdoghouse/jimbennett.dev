@@ -34,17 +34,29 @@
   @include mixins.flex(column);
 }
 
+.grid {
+  display: grid;
+  grid-gap: 0.625rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 18.75rem;
+}
+
 .Link {
   @include mixins.btn();
   flex-direction: column;
+  justify-content: space-between;
   &:hover {
     background: var(--color-dark);
     color: var(--color-light);
   }
 
   &__img {
+    width: 100%;
+    height: 200px;
     max-width: 100%;
     width: 768px;
+    object-fit: cover;
+    object-position: center;
     border-radius: 4px;
     opacity: 0.9;
     transition: opacity 0.25s;
