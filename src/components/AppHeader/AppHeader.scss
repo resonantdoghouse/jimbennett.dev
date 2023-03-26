@@ -3,17 +3,18 @@
 .AppHeader {
   position: fixed;
   top: 0;
+  z-index: 10;
   width: 100%;
   background: var(--color-dark);
   color: var(--color-light);
-
+  box-shadow: 3px 0 3px rgba(0, 0, 0, 0.5);
 
   &__title {
     margin: 0;
     font-size: 1rem;
     padding: 0.625rem;
-    border-top: 2px solid transparent;
-    border-bottom: 2px solid transparent;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
   }
   &__wrapper {
     @extend %wrapper;
@@ -34,13 +35,13 @@
     color: var(--color-light);
     padding: 0.625rem;
     text-decoration: none;
-    border-top: 2px solid transparent;
-    border-bottom: 2px solid transparent;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
     &:hover {
-      border-bottom: 2px solid var(--color-primary--accent);
+      border-bottom: 4px solid var(--color-primary--accent);
     }
     &--active {
-      border-bottom: 2px solid var(--color-primary--accent);
+      border-bottom: 4px solid var(--color-secondary);
     }
   }
 }

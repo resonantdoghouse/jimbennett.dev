@@ -1,14 +1,22 @@
 @use '../../styles/mixins.scss';
 
-.overlay {
+.HomePage {
+}
+
+.react-p5-wrapper {
+  width: 100vw;
+  height: 100vh;
+}
+
+.article {
+  @include mixins.flex(column, center, center, inline-flex);
   position: absolute;
-  top: 50%;
   left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
   background: var(--color-dark);
   border-radius: 4px;
-  @include mixins.flex(column);
   padding: 0.625rem;
   &__title {
     letter-spacing: 1px;
@@ -18,6 +26,30 @@
   }
 }
 
+.section {
+  position: relative;
+  z-index: 20;
+  padding: 1.25rem;
+  margin: 0 1.25rem 1.25rem;
+  @include mixins.flex(column);
+}
+
 .Link {
   @include mixins.btn();
+  flex-direction: column;
+  &:hover {
+    background: var(--color-dark);
+    color: var(--color-light);
+  }
+
+  &__img {
+    max-width: 100%;
+    width: 768px;
+    border-radius: 4px;
+    opacity: 0.9;
+    transition: opacity 0.25s;
+    &:hover {
+      opacity: 1;
+    }
+  }
 }

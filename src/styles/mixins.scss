@@ -1,5 +1,5 @@
-@mixin flex($direction: row, $align: center, $justify: center) {
-  display: flex;
+@mixin flex($direction: row, $align: center, $justify: center, $flex: flex) {
+  display: $flex;
   flex-direction: $direction;
   align-items: $align;
   justify-content: $justify;
@@ -17,6 +17,7 @@
   margin: 0.25rem;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
   display: inline-flex;
+  border-radius: 4px;
   &:hover {
     background: #fff;
     color: #000;

@@ -7,10 +7,10 @@ const ContactPage = () => (
       <li className="connect-list__item">
         <a
           className="connect-list__link"
-          href="https://www.linkedin.com/in/jim-bennett/"
+          href="https://codepen.io/jimbennett"
           target="_blank"
         >
-          LinkedIn
+          CodePen
         </a>
       </li>
       <li className="connect-list__item">
@@ -25,10 +25,10 @@ const ContactPage = () => (
       <li className="connect-list__item">
         <a
           className="connect-list__link"
-          href="https://codepen.io/jimbennett"
+          href="https://www.linkedin.com/in/jim-bennett/"
           target="_blank"
         >
-          CodePen
+          LinkedIn
         </a>
       </li>
     </ul>

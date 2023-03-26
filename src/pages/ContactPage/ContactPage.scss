@@ -7,7 +7,7 @@
 }
 
 .connect-list {
-  @include mixins.flex(column, flex-start);
+  @include mixins.flex(column);
   $self: &;
   &__item {
     border: 1px solid #cbcbcb;

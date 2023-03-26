@@ -5,11 +5,11 @@
 }
 
 :root {
-  --color-primary: #344e41;
-  --color-primary--accent: #a3b18a;
-  --color-secondary: #0077b6;
-  --color-dark: #000;
-  --color-light: #fff;
+  --color-primary: rgb(52, 78, 65);
+  --color-primary--accent: rgb(0, 111, 50);
+  --color-secondary: rgb(69, 123, 157);
+  --color-dark: rgb(0, 0, 0);
+  --color-light: rgb(255, 255, 255);
 }
 
 body {
@@ -17,7 +17,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
   overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 h1,
