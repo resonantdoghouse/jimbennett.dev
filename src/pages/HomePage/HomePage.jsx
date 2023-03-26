@@ -12,8 +12,12 @@ const HomePage = () => (
       <Link to="/contact" className="Link">
         Connect with me
       </Link>
+      <a href="#projects" className="Link">
+        Projects &darr;
+      </a>
     </article>
-    <section className="section">
+
+    <section id="projects" className="section">
       <h2>Toy Projects</h2>
       <Link className="Link" to="https://thejoyofcss.art/" target="_blank">
         React Player Piano 🎹
