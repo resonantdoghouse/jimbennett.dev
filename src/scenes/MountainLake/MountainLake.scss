@@ -1,7 +1,7 @@
 $tree-width: 10vmin;
 $tree-height: 12vmin;
 $mountain-width: 42vmin;
-$mountain-height: $mountain-width / 2;
+$mountain-height: calc($mountain-width / 2);
 
 *,
 *::before,
@@ -95,7 +95,7 @@ $mountain-height: $mountain-width / 2;
 		bottom: 0;
 		left: 50%;
 		width: 10px;
-		height: $tree-height / 2;
+		height: calc($tree-height / 2);
 		transform: translate(-50%, 0);
 		z-index: 20;
 	}
@@ -120,9 +120,9 @@ $mountain-height: $mountain-width / 2;
 		top: 0;
 		left: 50%;
 		border-top: 0 solid transparent;
-		border-right: $mountain-height / 2 solid transparent;
-		border-bottom: $mountain-width / 2 solid #d5e3ea;
-		border-left: $mountain-height / 2 solid transparent;
+		border-right: calc($mountain-height / 2) solid transparent;
+		border-bottom: calc($mountain-width / 2) solid #d5e3ea;
+		border-left: calc($mountain-height / 2) solid transparent;
 		transform: translate(-50%, -2%);
 	}
 	&--reflection {
