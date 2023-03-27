@@ -3,6 +3,7 @@ import MountainLake from '../../scenes/MountainLake'
 import './HomePage.scss'
 import playerPianoImg from '../../assets/images/react-player-piano.jpg'
 import threeHeightMapImage from '../../assets/images/threejs-heightmap.jpg'
+import p5PerlinTerrainImage from '../../assets/images/p5-perlin-terrain.jpg'
 
 const HomePage = () => (
   <div className="HomePage">
@@ -40,6 +41,21 @@ const HomePage = () => (
             alt="three.js Art Height Map Project"
           />
         </Link>
+
+         <Link
+          className="Link"
+          to="https://p5-perlin-terrain.netlify.app/"
+          target="_blank"
+        >
+          p5.js Perlin Noise 2D Terrain
+          <img
+            className="Link__img"
+            src={p5PerlinTerrainImage}
+            alt="three.js Art Height Map Project"
+          />
+        </Link>
+
+        
       </div>
     </section>
   </div>
