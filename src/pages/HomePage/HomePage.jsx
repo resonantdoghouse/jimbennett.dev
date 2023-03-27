@@ -1,13 +1,12 @@
-import { ReactP5Wrapper } from 'react-p5-wrapper'
 import { Link } from 'react-router-dom'
-import sketch from '../../generativeTerrainSketch'
+import MountainLake from '../../scenes/MountainLake'
 import './HomePage.scss'
 import playerPianoImg from '../../assets/images/react-player-piano.jpg'
 import threeHeightMapImage from '../../assets/images/threejs-heightmap.jpg'
 
 const HomePage = () => (
   <div className="HomePage">
-    <ReactP5Wrapper sketch={sketch} />
+    <MountainLake />
     <article className="article">
       <h1 className="article__title">Hello, World 👋</h1>
       <Link to="/contact" className="Link">
