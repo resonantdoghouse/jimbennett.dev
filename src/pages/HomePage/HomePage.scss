@@ -3,12 +3,7 @@
 .HomePage {
 }
 
-.react-p5-wrapper {
-  width: 100vw;
-  height: 100vh;
-}
-
-.article {
+.overlay {
   @include mixins.flex(column, center, center, inline-flex);
   position: absolute;
   left: 50%;
@@ -16,7 +11,7 @@
   z-index: 99;
   transform: translate(-50%, -50%);
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.36);
-  background: rgba(0,0,0,0.36);
+  background: rgba(0, 0, 0, 0.36);
   border-radius: 4px;
   padding: 0.625rem;
   &__title {
@@ -25,6 +20,8 @@
     margin: 0;
     padding: 0.625rem;
   }
+  opacity: 0;
+  animation: slide 0.5s 0.5s ease-in-out forwards;
 }
 
 .section {
@@ -47,8 +44,8 @@
   flex-direction: column;
   justify-content: space-between;
   &:hover {
-    background: var(--color-dark);
-    color: var(--color-light);
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
   }
 
   &__img {
@@ -60,9 +57,28 @@
     object-position: center;
     border-radius: 4px;
     opacity: 0.9;
-    transition: opacity 0.25s;
+    transition: opacity 0.25s 1s;
     &:hover {
       opacity: 1;
     }
+  }
+  &--inverse {
+    background: rgb(206, 206, 206);
+    color: rgb(0, 0, 0);
+    &:hover {
+      background: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+    }
+  }
+}
+
+@keyframes slide {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
   }
 }

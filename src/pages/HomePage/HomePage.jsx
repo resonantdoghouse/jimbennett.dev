@@ -7,12 +7,12 @@ import threeHeightMapImage from '../../assets/images/threejs-heightmap.jpg'
 const HomePage = () => (
   <div className="HomePage">
     <MountainLake />
-    <article className="article">
-      <h1 className="article__title">Hello, World 👋</h1>
+    <article className="overlay">
+      <h1 className="overlay__title">Hello, World 👋</h1>
       <Link to="/contact" className="Link">
         Connect with me
       </Link>
-      <a href="#projects" className="Link">
+      <a href="#projects" className="Link Link--inverse">
         Projects &darr;
       </a>
     </article>

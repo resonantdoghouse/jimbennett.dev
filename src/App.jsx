@@ -7,7 +7,6 @@ import './App.scss'
 const App = () => (
   <div className="App">
     <AppHeader />
-
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/contact" element={<ContactPage />} />
