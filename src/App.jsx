@@ -4,9 +4,8 @@ import HomePage from './pages/HomePage'
 import ContactPage from './pages/ContactPage'
 import './App.scss'
 
-
 const App = () => (
-  <div className="App">
+  <div className="app">
     <AppHeader />
     <Routes>
       <Route path="/" element={<HomePage />} />
