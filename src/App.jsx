@@ -1,8 +1,8 @@
-import { Routes, Route } from 'react-router-dom'
-import AppHeader from './components/AppHeader'
-import HomePage from './pages/HomePage'
-import ContactPage from './pages/ContactPage'
-import './App.scss'
+import { Routes, Route } from "react-router-dom";
+import AppHeader from "./components/AppHeader";
+import HomePage from "./pages/HomePage";
+import ContactPage from "./pages/ContactPage";
+import "./App.scss";
 
 const App = () => (
   <div className="app">
@@ -12,6 +12,6 @@ const App = () => (
       <Route path="/contact" element={<ContactPage />} />
     </Routes>
   </div>
-)
+);
 
-export default App
+export default App;
