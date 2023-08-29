@@ -1,7 +1,7 @@
-@use '../../styles/mixins.scss';
+@use "../../styles/mixins.scss";
 
 .ContactPage {
-  background: linear-gradient(rgba(255, 255, 255, 1), 85%, rgba(0, 0, 0, 0.1));
+  background: linear-gradient(rgba(255, 255, 255, 1), 90%, rgb(197, 197, 197));
   width: 100%;
   @include mixins.flex(row, center, center);
 }
@@ -25,6 +25,7 @@
   &__link {
     padding: 0.7rem 1.1rem;
     text-decoration: none;
+    background: var(--color-light);
     color: var(--color-secondary);
   }
 }
