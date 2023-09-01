@@ -10,9 +10,9 @@ $margin-size: 0.25rem;
 $transition-duration: 0.25s;
 
 .ContactPage {
+  @include mixins.flex(row, center, center);
   background: linear-gradient(rgba(255, 255, 255, 1), 90%, rgb(197, 197, 197));
   width: 100%;
-  @include mixins.flex(row, center, center);
   flex-direction: column;
 }
 
