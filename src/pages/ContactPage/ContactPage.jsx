@@ -35,7 +35,7 @@ const ContactPage = () => (
     <h2>Contact</h2>
     <form
       className="contact-form"
-      name="contact"
+      name="Contact"
       method="POST"
       netlify
     >
