@@ -1,4 +1,4 @@
-@use "../../styles/mixins.scss";
+@use '../../styles/mixins.scss';
 
 .ContactPage {
   background: linear-gradient(rgba(255, 255, 255, 1), 90%, rgb(197, 197, 197));
@@ -26,6 +26,50 @@
   &__link {
     padding: 0.7rem 1.1rem;
     text-decoration: none;
+    background: var(--color-light);
+    color: var(--color-secondary);
+  }
+}
+
+/*
+* Contact Form
+*/
+.contact-form {
+  &__input {
+    border: 1px solid #cbcbcb;
+    background: #f8f8f8;
+    border-radius: 3px;
+    transition: 0.25s;
+    margin: 0.25rem;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+
+    padding: 0.7rem 1.1rem;
+    background: var(--color-light);
+    color: var(--color-secondary);
+  }
+  &__textarea {
+    border: 1px solid #cbcbcb;
+    background: #f8f8f8;
+    border-radius: 3px;
+    transition: 0.25s;
+    margin: 0.25rem;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+
+    padding: 0.7rem 1.1rem;
+    background: var(--color-light);
+    color: var(--color-secondary);
+  }
+  &__btn {
+    border: 1px solid #cbcbcb;
+    border-radius: 3px;
+    transition: 0.25s;
+    margin: 0.25rem;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+
+    padding: 0.7rem 1.1rem;
     background: var(--color-light);
     color: var(--color-secondary);
   }

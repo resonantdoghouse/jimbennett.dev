@@ -33,24 +33,48 @@ const ContactPage = () => (
       </li>
     </ul>
     <h2>Contact</h2>
-    <form name="contact" method="POST" data-netlify="true">
+    <form
+      classNams="contact-form"
+      name="contact"
+      method="POST"
+      data-netlify="true"
+    >
       <p>
-        <label>
-          Your Name: <input type="text" name="name" />
+        <label className="contact-form__label">
+          Your Name:{' '}
+          <input
+            className="contact-form__input"
+            type="text"
+            name="name"
+            placeholder="name"
+          />
         </label>
       </p>
       <p>
-        <label>
-          Your Email: <input type="email" name="email" />
+        <label className="contact-form__label">
+          Your Email:{' '}
+          <input
+            className="contact-form__input"
+            type="email"
+            name="email"
+            placeholder="email"
+          />
         </label>
       </p>
       <p>
-        <label>
-          Message: <textarea name="message"></textarea>
+        <label className="contact-form__label">
+          Message:{' '}
+          <textarea
+            className="contact-form__textarea"
+            name="message"
+            placeholder="message"
+          ></textarea>
         </label>
       </p>
       <p>
-        <button type="submit">Send</button>
+        <button className="contact-form__btn" type="submit">
+          Send
+        </button>
       </p>
     </form>
   </section>
