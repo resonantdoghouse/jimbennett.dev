@@ -34,10 +34,8 @@ const ContactPage = () => (
     </ul>
     <h2>Contact</h2>
     <form
-      classNams="contact-form"
+      className="contact-form"
       name="contact"
-      method="POST"
-      data-netlify="true"
       netlify
     >
       <p>
