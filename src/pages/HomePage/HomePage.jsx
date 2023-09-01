@@ -19,6 +19,9 @@ const HomePage = () => (
     </article>
 
     <section id="projects" className="section">
+
+    <button onClick={() => methodDoesNotExist()}>Break the world</button>
+    
       <h2>Toy Projects</h2>
       <div className="grid">
         <Link className="Link" to="https://thejoyofcss.art/" target="_blank">
