@@ -1,4 +1,4 @@
-import './ContactPage.scss';
+import "./ContactPage.scss";
 
 const ContactPage = () => (
   <section className="ContactPage">
@@ -33,15 +33,11 @@ const ContactPage = () => (
       </li>
     </ul>
     <h2>Contact</h2>
-    <form
-      className="contact-form"
-      name="Contact"
-      method="POST"
-      netlify
-    >
+    <form className="contact-form" name="contact" method="POST" netlify>
+      <input type="hidden" name="form-name" value="contact" />
       <p>
         <label className="contact-form__label">
-          Your Name:{' '}
+          Your Name:{" "}
           <input
             className="contact-form__input"
             type="text"
@@ -52,7 +48,7 @@ const ContactPage = () => (
       </p>
       <p>
         <label className="contact-form__label">
-          Your Email:{' '}
+          Your Email:{" "}
           <input
             className="contact-form__input"
             type="email"
@@ -63,7 +59,7 @@ const ContactPage = () => (
       </p>
       <p>
         <label className="contact-form__label">
-          Message:{' '}
+          Message:{" "}
           <textarea
             className="contact-form__textarea"
             name="message"
