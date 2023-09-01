@@ -1,5 +1,14 @@
 @use '../../styles/mixins.scss';
 
+$border-style: 1px solid #cbcbcb;
+$background-light: #f8f8f8;
+$background-white: #fff;
+$box-shadow-light: 3px 3px 3px rgba(0, 0, 0, 0.05);
+$box-shadow-dark: 3px 4px 6px rgba(0, 0, 0, 0.25);
+$padding-size: 0.7rem 1.1rem;
+$margin-size: 0.25rem;
+$transition-duration: 0.25s;
+
 .ContactPage {
   background: linear-gradient(rgba(255, 255, 255, 1), 90%, rgb(197, 197, 197));
   width: 100%;
@@ -9,68 +18,56 @@
 
 .connect-list {
   @include mixins.flex(column);
-  $self: &;
   &__item {
-    border: 1px solid #cbcbcb;
-    background: #f8f8f8;
+    border: $border-style;
+    background: $background-light;
     border-radius: 3px;
-    transition: 0.25s;
-    margin: 0.25rem;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+    transition: $transition-duration;
+    margin: $margin-size;
+    box-shadow: $box-shadow-light;
     display: inline-flex;
     &:hover {
-      background: #fff;
-      box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.25);
+      background: $background-white;
+      box-shadow: $box-shadow-dark;
     }
   }
   &__link {
-    padding: 0.7rem 1.1rem;
+    padding: $padding-size;
     text-decoration: none;
     background: var(--color-light);
     color: var(--color-secondary);
   }
 }
 
-/*
-* Contact Form
-*/
 .contact-form {
-  &__input {
-    border: 1px solid #cbcbcb;
-    background: #f8f8f8;
-    border-radius: 3px;
-    transition: 0.25s;
-    margin: 0.25rem;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
-    display: inline-flex;
-
-    padding: 0.7rem 1.1rem;
-    background: var(--color-light);
-    color: var(--color-secondary);
+  &__label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
+  &__input,
   &__textarea {
-    border: 1px solid #cbcbcb;
-    background: #f8f8f8;
+    border: $border-style;
+    background: $background-light;
     border-radius: 3px;
-    transition: 0.25s;
-    margin: 0.25rem;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+    transition: $transition-duration;
+    margin: $margin-size;
+    box-shadow: $box-shadow-light;
     display: inline-flex;
-
-    padding: 0.7rem 1.1rem;
+    padding: $padding-size;
     background: var(--color-light);
     color: var(--color-secondary);
   }
   &__btn {
-    border: 1px solid #cbcbcb;
+    border: $border-style;
     border-radius: 3px;
-    transition: 0.25s;
-    margin: 0.25rem;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
-    display: inline-flex;
-
-    padding: 0.7rem 1.1rem;
-    background: var(--color-light);
-    color: var(--color-secondary);
+    transition: $transition-duration;
+    margin: $margin-size;
+    box-shadow: $box-shadow-light;
+    display: flex;
+    padding: $padding-size;
+    background: var(--color-primary);
+    color: var(--color-light);
+    cursor: pointer;
   }
 }
