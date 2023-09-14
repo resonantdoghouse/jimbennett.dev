@@ -40,6 +40,8 @@ $transition-duration: 0.25s;
 }
 
 .contact-form {
+  display: flex;
+  flex-direction: column;
   &__label {
     display: flex;
     align-items: center;
@@ -47,6 +49,7 @@ $transition-duration: 0.25s;
   }
   &__input,
   &__textarea {
+    flex-grow: 1;
     border: $border-style;
     background: $background-light;
     border-radius: 3px;
@@ -57,6 +60,10 @@ $transition-duration: 0.25s;
     padding: $padding-size;
     background: var(--color-light);
     color: var(--color-secondary);
+  }
+  &__textarea  {
+    max-width: 100%;
+    resize: none;
   }
   &__btn {
     border: $border-style;
