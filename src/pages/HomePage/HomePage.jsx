@@ -19,6 +19,7 @@ const HomePage = () => (
     </article>
 
     <section id="projects" className="section">
+
       <h2>Toy Projects</h2>
       <div className="grid">
         <Link className="Link" to="https://thejoyofcss.art/" target="_blank">

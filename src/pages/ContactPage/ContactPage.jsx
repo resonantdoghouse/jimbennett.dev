@@ -1,4 +1,4 @@
-import './ContactPage.scss';
+import "./ContactPage.scss";
 
 const ContactPage = () => (
   <section className="ContactPage">
