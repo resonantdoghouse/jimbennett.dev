@@ -16,7 +16,7 @@ const Contact: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button 
             as="a" 
-            href="mailto:hello@jimbennett.dev" 
+            href="mailto:jim.webdesign@gmail.com" 
             soundType="coin"
             >
             SEND EMAIL
