@@ -1,0 +1,55 @@
+import React from 'react';
+import { useSound } from '../../contexts/SoundContext';
+
+const Quests: React.FC = () => {
+  const { playSound } = useSound();
+
+  const QuestItem = ({ icon, title, date, desc }: { icon: string, title: string, date: string, desc: string }) => (
+    <div 
+      className="bg-card border border-border p-6 flex gap-5 relative overflow-hidden transition-all duration-300 hover:border-accent-secondary hover:translate-x-2 group"
+      onMouseEnter={() => playSound('hover')}
+    >
+      {/* Sidebar Accent */}
+      <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-accent" />
+      
+      <div className="text-3xl min-w-[60px] flex items-center justify-center bg-accent/10 text-accent rounded-lg h-16 self-center">
+        {icon}
+      </div>
+      
+      <div>
+        <h3 className="font-bold text-xl mb-1">{title}</h3>
+        <span className="font-mono text-xs bg-background px-2 py-1 border border-border inline-block mb-3">
+          {date}
+        </span>
+        <p className="text-text-muted">{desc}</p>
+      </div>
+    </div>
+  );
+
+  return (
+    <section id="quests" className="py-24 relative">
+      <div className="max-w-[1100px] mx-auto px-5">
+        <h2 className="text-4xl font-extrabold mb-10 flex items-center gap-4 pixel-underline">
+          Current Quests
+        </h2>
+
+        <div className="flex flex-col gap-6">
+          <QuestItem 
+            icon="💻"
+            title="Senior Full Stack Engineer"
+            date="Present"
+            desc="Architecting scalable web applications using TypeScript, Node.js, and SQL. Leading backend optimization and API design initiatives."
+          />
+          <QuestItem 
+            icon="🎨"
+            title="Creative Frontend Specialist"
+            date="Freelance"
+            desc="Building immersive user experiences with advanced CSS animations, WebGL, and performance-optimized JavaScript interactions."
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Quests;
