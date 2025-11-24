@@ -90,18 +90,21 @@
         pointer-events: none;
       }
 
-      /* Pixelated Underline */
+      /* Pixelated Underline - Segmented Bar Style */
       .pixel-underline::after {
         content: '';
         display: block;
-        width: 40px;
-        height: 8px;
-        margin-left: 15px;
-        background-image: linear-gradient(45deg, var(--accent) 25%, transparent 25%), 
-                          linear-gradient(-45deg, var(--accent) 25%, transparent 25%), 
-                          linear-gradient(45deg, transparent 75%, var(--accent) 75%), 
-                          linear-gradient(-45deg, transparent 75%, var(--accent) 75%);
-        background-size: 8px 8px;
+        width: 60px;
+        height: 14px;
+        /* Creates a segmented "loading bar" look */
+        background: repeating-linear-gradient(
+          to right,
+          var(--accent),
+          var(--accent) 8px,
+          transparent 8px,
+          transparent 12px
+        );
+        opacity: 0.8;
       }
 
       /* Clip Path for Buttons */

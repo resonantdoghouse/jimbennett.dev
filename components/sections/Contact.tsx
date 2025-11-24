@@ -6,7 +6,7 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-24 text-center pb-32 bg-card border-t border-border">
        <div className="max-w-[800px] mx-auto px-5">
         <span className="font-mono text-accent text-sm mb-4 block">AVAILABLE FOR EMPLOYMENT</span>
-        <h2 className="text-4xl font-extrabold mb-6 pixel-underline inline-flex">
+        <h2 className="text-4xl font-extrabold mb-6 pixel-underline inline-flex items-center gap-4">
           Ready to Join Your Team
         </h2>
         <p className="text-xl mb-10 text-text-muted leading-relaxed">

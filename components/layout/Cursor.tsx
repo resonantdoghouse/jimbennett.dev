@@ -40,11 +40,10 @@ const Cursor: React.FC = () => {
         outlinePos.current.x += dx * 0.15;
         outlinePos.current.y += dy * 0.15;
 
-        const x = outlinePos.current.x;
-        const y = outlinePos.current.y;
-
-        // Apply translate directly for performance
-        outlineRef.current.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+        // Apply translate to the WRAPPER only. 
+        // We include translate(-50%, -50%) to center the element on the coordinates.
+        // This works because the wrapper shrinks to fit the child (40px or 60px).
+        outlineRef.current.style.transform = `translate(${outlinePos.current.x}px, ${outlinePos.current.y}px) translate(-50%, -50%)`;
       }
       requestAnimationFrame(animateOutline);
     };
@@ -66,16 +65,26 @@ const Cursor: React.FC = () => {
       <div 
         ref={dotRef}
         className="fixed top-0 left-0 w-2.5 h-2.5 bg-accent-secondary pointer-events-none z-[10000] -ml-[5px] -mt-[5px] mix-blend-difference"
+        style={{ willChange: 'transform' }}
       />
       
-      {/* Outer Outline */}
+      {/* Outer Outline Wrapper - Handles Position Only */}
       <div 
         ref={outlineRef}
-        className={`
-          fixed top-0 left-0 border-2 border-accent pointer-events-none z-[9999] transition-all duration-300 ease-out
-          ${isHovered ? 'w-[60px] h-[60px] bg-accent/10 border-dashed animate-spin-slow' : 'w-[40px] h-[40px] border-solid'}
-        `}
-      />
+        className="fixed top-0 left-0 pointer-events-none z-[9999] flex items-center justify-center"
+        style={{ willChange: 'transform' }}
+      >
+        {/* Visual Box - Handles Shape, Color, and Spin Animation */}
+        <div 
+          className={`
+            border-2 border-accent transition-all duration-300 ease-out
+            ${isHovered 
+              ? 'w-[60px] h-[60px] bg-accent/10 border-dashed animate-spin-slow' 
+              : 'w-[40px] h-[40px] border-solid'
+            }
+          `}
+        />
+      </div>
     </>
   );
 };
