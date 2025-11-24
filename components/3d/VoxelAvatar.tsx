@@ -5,6 +5,21 @@ import * as THREE from 'three';
 import { useMousePosition } from '../../hooks/useMousePosition';
 
 // Add type declarations for R3F elements to resolve JSX.IntrinsicElements errors
+// We augment both the 'react' module (for React 18+) and the global namespace to ensure coverage.
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      group: any;
+      mesh: any;
+      boxGeometry: any;
+      meshStandardMaterial: any;
+      ambientLight: any;
+      directionalLight: any;
+      pointLight: any;
+    }
+  }
+}
+
 declare global {
   namespace JSX {
     interface IntrinsicElements {
