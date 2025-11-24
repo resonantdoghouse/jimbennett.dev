@@ -4,6 +4,21 @@ import { useTheme } from '../../contexts/ThemeContext';
 import * as THREE from 'three';
 import { useMousePosition } from '../../hooks/useMousePosition';
 
+// Add type declarations for R3F elements to resolve JSX.IntrinsicElements errors
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      group: any;
+      mesh: any;
+      boxGeometry: any;
+      meshStandardMaterial: any;
+      ambientLight: any;
+      directionalLight: any;
+      pointLight: any;
+    }
+  }
+}
+
 const MATRIX = [
   [0,0,1,0,0],
   [0,1,1,1,0],
