@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import LogRocket from 'logrocket';
 import App from './App';
+
+LogRocket.init("fskgrn/personal-site");
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
