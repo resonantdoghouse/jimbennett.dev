@@ -14,7 +14,7 @@ const Skills: React.FC = () => {
     <section id="skills" className="py-20 bg-background border-b border-border">
       <div className="max-w-[1100px] mx-auto px-5">
         <h2 className="text-2xl font-bold mb-8 font-mono text-center md:text-left flex items-center gap-3">
-          <span className="text-accent">>></span> TECH_STACK_INIT
+          <span className="text-accent">{'>>'}</span> TECH_STACK_INIT
         </h2>
         
         <div className="flex flex-wrap gap-4 justify-center md:justify-start">
