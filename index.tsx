@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import LogRocket from 'logrocket';
 import App from './App';
-import './index.css';
 
 try {
   // Disable network capture to prevent "Cannot set property fetch" error
