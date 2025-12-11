@@ -4,6 +4,21 @@ import { useTheme } from '../../contexts/ThemeContext';
 import * as THREE from 'three';
 import { useMousePosition } from '../../hooks/useMousePosition';
 
+// Fix for missing JSX types for React Three Fiber elements
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      group: any;
+      mesh: any;
+      boxGeometry: any;
+      meshStandardMaterial: any;
+      ambientLight: any;
+      directionalLight: any;
+      pointLight: any;
+    }
+  }
+}
+
 const MATRIX = [
   [0,0,1,0,0],
   [0,1,1,1,0],

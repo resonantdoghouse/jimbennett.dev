@@ -2,69 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --- CSS VARIABLES & GLOBAL STYLES --- */
-:root {
-  /* Light Mode */
-  --bg-body: #f0f2f5;
-  --bg-card: #ffffff;
-  --text-main: #1a1a1a;
-  --text-inverse: #f0f2f5;
-  --text-muted: #525252;
-  --accent: #6366f1; /* Indigo */
-  --accent-hover: #4f46e5;
-  --accent-secondary: #ec4899; /* Pink */
-  --border: #e5e7eb;
-  --scanline-color: rgba(0,0,0,0.03);
+@layer base {
+  :root {
+    /* Light Mode */
+    --bg-body: #f0f2f5;
+    --bg-card: #ffffff;
+    --text-main: #1a1a1a;
+    --text-inverse: #f0f2f5;
+    --text-muted: #525252;
+    --accent: #6366f1; /* Indigo */
+    --accent-hover: #4f46e5;
+    --accent-secondary: #ec4899; /* Pink */
+    --border: #e5e7eb;
+    --scanline-color: rgba(0,0,0,0.03);
+  }
+
+  [data-theme="dark"] {
+    --bg-body: #0b0f19;
+    --bg-card: #161b2c;
+    --text-main: #f1f5f9;
+    --text-inverse: #0b0f19;
+    --text-muted: #94a3b8;
+    --accent: #818cf8;
+    --accent-hover: #a5b4fc;
+    --accent-secondary: #f472b6;
+    --border: #334155;
+    --scanline-color: rgba(255,255,255,0.02);
+  }
+
+  body {
+    cursor: none; /* Custom cursor */
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden; /* Fix horizontal scrollbar issues on Windows */
+  }
 }
 
-[data-theme="dark"] {
-  --bg-body: #0b0f19;
-  --bg-card: #161b2c;
-  --text-main: #f1f5f9;
-  --text-inverse: #0b0f19;
-  --text-muted: #94a3b8;
-  --accent: #818cf8;
-  --accent-hover: #a5b4fc;
-  --accent-secondary: #f472b6;
-  --border: #334155;
-  --scanline-color: rgba(255,255,255,0.02);
-}
+@layer utilities {
+  .scanlines {
+    background: linear-gradient(to bottom, var(--scanline-color) 50%, transparent 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+  }
 
-body {
-  cursor: none; /* Custom cursor */
-  background-color: var(--bg-body);
-  color: var(--text-main);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  overflow-x: hidden; /* Fix horizontal scrollbar issues on Windows */
-}
+  .pixel-underline::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 14px;
+    /* Creates a segmented "loading bar" look */
+    background: repeating-linear-gradient(
+      to right,
+      var(--accent),
+      var(--accent) 8px,
+      transparent 8px,
+      transparent 12px
+    );
+    opacity: 0.8;
+  }
 
-/* Scanlines */
-.scanlines {
-  background: linear-gradient(to bottom, var(--scanline-color) 50%, transparent 50%);
-  background-size: 100% 4px;
-  pointer-events: none;
-}
-
-/* Pixelated Underline - Segmented Bar Style */
-.pixel-underline::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 14px;
-  /* Creates a segmented "loading bar" look */
-  background: repeating-linear-gradient(
-    to right,
-    var(--accent),
-    var(--accent) 8px,
-    transparent 8px,
-    transparent 12px
-  );
-  opacity: 0.8;
-}
-
-/* Clip Path for Buttons */
-.pixel-clip {
-  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  .pixel-clip {
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
 }
 
 /* Hide scrollbar for cleaner look */
