@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useTheme } from '../../contexts/ThemeContext';
 import * as THREE from 'three';
@@ -92,14 +92,6 @@ const VoxelGroup: React.FC = () => {
       groupRef.current.rotation.y += (mouse.x * 0.5 - groupRef.current.rotation.y) * 0.05;
       groupRef.current.rotation.x += (-mouse.y * 0.5 - groupRef.current.rotation.x) * 0.05;
       groupRef.current.rotation.z = Math.sin(time * 0.2) * 0.05;
-      
-      // Animate debris (children from index > voxels.length)
-      // Note: In R3F, we are rendering mapped arrays, so we can't easily iterate children directly 
-      // the same way unless we use refs for each debris. 
-      // Simplified: We will animate the group, but individual debris animation 
-      // needs state or separate components for optimal React patterns.
-      // For simplicity in this port, we'll keep debris static relative to the group 
-      // or implement a simple wiggle in a separate component if needed.
     }
   });
 
@@ -140,14 +132,65 @@ const Debris: React.FC<{ initialPos: [number, number, number], yOffset: number, 
   );
 };
 
+// Fallback UI for when WebGL is unavailable or crashes
+const FallbackDisplay = ({ message }: { message: string }) => (
+  <div className="w-full h-full flex items-center justify-center bg-accent/5 border-2 border-dashed border-accent/20 rounded-lg">
+    <div className="text-center p-4">
+      <div className="text-2xl mb-2 text-accent">⚠️</div>
+      <span className="font-mono text-xs text-accent">
+        {message}
+      </span>
+    </div>
+  </div>
+);
+
+// Error Boundary to catch Canvas crashes
+class WebGLErrorBoundary extends React.Component<{fallback: React.ReactNode, children: React.ReactNode}, {hasError: boolean}> {
+  constructor(props: any) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError(error: any) {
+    return { hasError: true };
+  }
+  componentDidCatch(error: any, errorInfo: any) {
+    console.warn("WebGL Context Error caught by boundary:", error);
+  }
+  render() {
+    if (this.state.hasError) return this.props.fallback;
+    return this.props.children;
+  }
+}
+
 const Scene: React.FC = () => {
+  const [isSupported, setIsSupported] = useState(true);
+
+  useEffect(() => {
+    // Proactive check for WebGL support
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      if (!gl) {
+        setIsSupported(false);
+      }
+    } catch (e) {
+      setIsSupported(false);
+    }
+  }, []);
+
+  if (!isSupported) {
+    return <FallbackDisplay message="[GRAPHICS_MODULE_OFFLINE]" />;
+  }
+
   return (
-    <Canvas camera={{ position: [0, 0, 10], fov: 45 }} className="w-full h-full">
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[5, 5, 5]} intensity={1} />
-      <pointLight position={[0, 0, 2]} intensity={2} color="#ec4899" distance={10} />
-      <VoxelGroup />
-    </Canvas>
+    <WebGLErrorBoundary fallback={<FallbackDisplay message="[RENDER_SYS_FAILURE]" />}>
+      <Canvas camera={{ position: [0, 0, 10], fov: 45 }} className="w-full h-full">
+        <ambientLight intensity={0.6} />
+        <directionalLight position={[5, 5, 5]} intensity={1} />
+        <pointLight position={[0, 0, 2]} intensity={2} color="#ec4899" distance={10} />
+        <VoxelGroup />
+      </Canvas>
+    </WebGLErrorBoundary>
   );
 };
 
