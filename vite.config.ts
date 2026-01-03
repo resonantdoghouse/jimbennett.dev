@@ -7,5 +7,15 @@ export default defineConfig({
   base: './',
   build: {
     outDir: 'dist',
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          three: ['three', '@react-three/fiber', '@react-three/drei'],
+          utils: ['logrocket'],
+        },
+      },
+    },
   },
 });
