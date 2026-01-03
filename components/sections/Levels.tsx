@@ -89,28 +89,28 @@ const Levels: React.FC = () => {
             desc="A curated collection of CSS-only art pieces demonstrating the power of modern CSS styling and creative constraints."
             tech={['CSS', 'SCSS', 'Creative Coding']}
             link="https://thejoyofcss.art/"
-            image="https://image.thum.io/get/width/800/crop/600/https://thejoyofcss.art/"
+            image="/assets/portfolio/joy-of-css.jpg"
           />
           <ProjectCard 
             title="Three.js Heightmap"
             desc="Interactive 3D terrain visualization using heightmaps and WebGL shaders for performant rendering."
             tech={['Three.js', 'WebGL', 'JavaScript']}
             link="https://threejs-art-heightmap.netlify.app/"
-            image="https://image.thum.io/get/width/800/crop/600/https://threejs-art-heightmap.netlify.app/"
+            image="/assets/portfolio/threejs-heightmap.jpg"
           />
            <ProjectCard 
             title="Perlin Noise Terrain"
             desc="Procedural terrain generation using Perlin noise algorithms and p5.js for organic pattern creation."
             tech={['p5.js', 'Algorithms', 'JavaScript']}
             link="https://p5-perlin-terrain.netlify.app/"
-            image="https://image.thum.io/get/width/800/crop/600/https://p5-perlin-terrain.netlify.app/"
+            image="/assets/portfolio/perlin-noise.jpg"
           />
           <ProjectCard 
             title="Interactive Experiments"
             desc="A featured CodePen demonstration exploring advanced frontend techniques, animation loops, and interactive UI concepts."
             tech={['CodePen', 'CSS3', 'Animation']}
             link="https://codepen.io/jimbennett/full/Odyapv"
-            image="https://shots.codepen.io/jimbennett/pen/Odyapv-800.jpg"
+            image="/assets/portfolio/interactive-experiments.jpg"
           />
         </div>
       </div>
