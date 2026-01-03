@@ -28,6 +28,8 @@ const Levels: React.FC = () => {
           <img 
             src={image} 
             alt={`Screenshot of ${title}`}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
