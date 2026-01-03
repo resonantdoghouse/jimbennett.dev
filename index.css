@@ -14,7 +14,7 @@
     --accent-hover: #4f46e5;
     --accent-secondary: #ec4899; /* Pink */
     --border: #e5e7eb;
-    --scanline-color: rgba(0,0,0,0.03);
+    --scanline-color: rgba(0, 0, 0, 0.03);
   }
 
   [data-theme="dark"] {
@@ -27,7 +27,7 @@
     --accent-hover: #a5b4fc;
     --accent-secondary: #f472b6;
     --border: #334155;
-    --scanline-color: rgba(255,255,255,0.02);
+    --scanline-color: rgba(255, 255, 255, 0.02);
   }
 
   body {
@@ -41,13 +41,17 @@
 
 @layer utilities {
   .scanlines {
-    background: linear-gradient(to bottom, var(--scanline-color) 50%, transparent 50%);
+    background: linear-gradient(
+      to bottom,
+      var(--scanline-color) 50%,
+      transparent 50%
+    );
     background-size: 100% 4px;
     pointer-events: none;
   }
 
   .pixel-underline::after {
-    content: '';
+    content: "";
     display: block;
     width: 60px;
     height: 14px;
@@ -63,7 +67,14 @@
   }
 
   .pixel-clip {
-    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    clip-path: polygon(
+      10px 0,
+      100% 0,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      0 100%,
+      0 10px
+    );
   }
 }
 
@@ -72,8 +83,14 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-body); 
+  background: var(--bg-body);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--accent); 
+  background: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scanlines {
+    display: none;
+  }
 }

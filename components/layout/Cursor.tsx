@@ -11,9 +11,11 @@ const Cursor: React.FC = () => {
   const outlinePos = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
-    // Only show custom cursor on fine pointer devices (mouse)
+    // Only show custom cursor on fine pointer devices (mouse) AND if user hasn't requested reduced motion
     const mediaQuery = window.matchMedia("(pointer: fine)");
-    if (!mediaQuery.matches) return;
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    
+    if (!mediaQuery.matches || reducedMotionQuery.matches) return;
 
     setIsVisible(true);
 
