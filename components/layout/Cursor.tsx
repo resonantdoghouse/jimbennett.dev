@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const Cursor: React.FC = () => {
-  const dotRef = useRef<HTMLDivElement>(null);
+
   const outlineRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -22,10 +22,7 @@ const Cursor: React.FC = () => {
     const handleMouseMove = (e: MouseEvent) => {
       mousePos.current = { x: e.clientX, y: e.clientY };
       
-      // Update dot immediately
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px) rotate(45deg)`;
-      }
+
 
       // Check for hover targets
       const target = e.target as HTMLElement;
@@ -63,12 +60,7 @@ const Cursor: React.FC = () => {
 
   return (
     <>
-      {/* Inner Dot */}
-      <div 
-        ref={dotRef}
-        className="fixed top-0 left-0 w-2.5 h-2.5 bg-accent-secondary pointer-events-none z-[10000] -ml-[5px] -mt-[5px] mix-blend-difference"
-        style={{ willChange: 'transform' }}
-      />
+
       
       {/* Outer Outline Wrapper - Handles Position Only */}
       <div 
@@ -76,13 +68,13 @@ const Cursor: React.FC = () => {
         className="fixed top-0 left-0 pointer-events-none z-[9999] flex items-center justify-center"
         style={{ willChange: 'transform' }}
       >
-        {/* Visual Box - Handles Shape, Color, and Spin Animation */}
+        {/* Visual Box - Handles Shape, Color, and Spin Animation - Simplified follower */}
         <div 
           className={`
-            border-2 border-accent transition-all duration-300 ease-out
+            border-2 border-accent/50 transition-all duration-300 ease-out rounded-full
             ${isHovered 
-              ? 'w-[60px] h-[60px] bg-accent/10 border-dashed animate-spin-slow' 
-              : 'w-[40px] h-[40px] border-solid'
+              ? 'w-[50px] h-[50px] bg-accent/5 border-accent animate-spin-slow' 
+              : 'w-[30px] h-[30px] border-solid'
             }
           `}
         />

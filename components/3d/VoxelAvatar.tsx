@@ -31,7 +31,8 @@ const MATRIX = [
 const VoxelGroup: React.FC = () => {
   const groupRef = useRef<THREE.Group>(null);
   const { theme } = useTheme();
-  const mouse = useMousePosition();
+  // Mouse position is now a ref, so it won't trigger re-renders
+  const mouseRef = useMousePosition();
   
   // Voxel Logic
   const voxels = useMemo(() => {
@@ -74,8 +75,9 @@ const VoxelGroup: React.FC = () => {
       groupRef.current.position.y = Math.sin(time * 0.5) * 0.2;
       
       // Mouse interaction
-      groupRef.current.rotation.y += (mouse.x * 0.5 - groupRef.current.rotation.y) * 0.05;
-      groupRef.current.rotation.x += (-mouse.y * 0.5 - groupRef.current.rotation.x) * 0.05;
+      const { x, y } = mouseRef.current;
+      groupRef.current.rotation.y += (x * 0.5 - groupRef.current.rotation.y) * 0.05;
+      groupRef.current.rotation.x += (-y * 0.5 - groupRef.current.rotation.x) * 0.05;
       groupRef.current.rotation.z = Math.sin(time * 0.2) * 0.05;
     }
   });

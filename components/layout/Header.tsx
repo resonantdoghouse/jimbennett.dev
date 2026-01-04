@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   const NavLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
     <a 
       href={href}
-      className="font-mono text-sm relative p-1 group hover:text-accent cursor-none"
+      className="font-mono text-sm relative p-1 group hover:text-accent"
       onMouseEnter={() => playSound('hover')}
       onClick={() => {
         playSound('click');
@@ -31,7 +31,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <a 
             href="#" 
-            className="font-pixel text-sm md:text-base text-accent drop-shadow-[2px_2px_0_var(--accent-secondary)] cursor-none"
+            className="font-pixel text-sm md:text-base text-accent drop-shadow-[2px_2px_0_var(--accent-secondary)]"
             onMouseEnter={() => playSound('coin')}
           >
             JIM_BENNETT_DEV

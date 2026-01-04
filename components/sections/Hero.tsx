@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
 
           <div 
             id="canvas-container" 
-            className="w-full h-[300px] md:h-[500px] relative cursor-none"
+            className="w-full h-[300px] md:h-[500px] relative"
             aria-label="Interactive 3D Avatar"
           >
             <Scene />

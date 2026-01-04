@@ -29,7 +29,7 @@ const Button: React.FC<ButtonProps> = ({
     if (props.onClick) props.onClick(e as any);
   };
 
-  const baseStyles = "cursor-none transition-all duration-200 ease-out focus:outline-none focus-visible:ring-4 focus-visible:ring-accent-secondary focus-visible:ring-offset-2";
+  const baseStyles = "transition-all duration-200 ease-out focus:outline-none focus-visible:ring-4 focus-visible:ring-accent-secondary focus-visible:ring-offset-2";
   
   const variants = {
     primary: `

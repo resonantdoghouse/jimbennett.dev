@@ -4,6 +4,7 @@ import { SoundProvider } from './contexts/SoundContext';
 
 import Scanlines from './components/layout/Scanlines';
 import Cursor from './components/layout/Cursor';
+import CursorParticles from './components/layout/CursorParticles';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
@@ -22,6 +23,7 @@ function App() {
           
           {/* Global Overlays */}
           <Scanlines />
+          <CursorParticles />
           <Cursor />
 
           {/* Navigation */}

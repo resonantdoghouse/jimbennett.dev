@@ -58,7 +58,7 @@ const Levels: React.FC = () => {
           ))}
         </div>
         
-        <a href={link || "#"} target="_blank" rel="noopener noreferrer" className="font-bold font-mono text-sm text-accent hover:text-accent-secondary hover:underline cursor-none inline-flex items-center gap-2 mt-auto">
+        <a href={link || "#"} target="_blank" rel="noopener noreferrer" className="font-bold font-mono text-sm text-accent hover:text-accent-secondary hover:underline inline-flex items-center gap-2 mt-auto">
           <span>VIEW PROJECT</span>
           <span>{'>'}</span>
         </a>
@@ -78,7 +78,7 @@ const Levels: React.FC = () => {
                     Selected works demonstrating proficiency in creative coding, 3D visualization, and advanced CSS architecture.
                 </p>
             </div>
-            <a href="https://github.com/resonantdoghouse" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent-secondary font-mono text-sm underline cursor-none">
+            <a href="https://github.com/resonantdoghouse" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent-secondary font-mono text-sm underline">
                 View GitHub Profile
             </a>
         </div>
