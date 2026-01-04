@@ -18,6 +18,11 @@ const CursorParticles: React.FC = () => {
   const lastMouse = useRef({ x: 0, y: 0 });
   const { theme } = useTheme();
 
+  // Theme colors for "evolution" effect
+  const colors = theme === 'light' 
+    ? ['99, 102, 241', '236, 72, 153', '59, 130, 246'] // Indigo, Pink, Blue
+    : ['129, 140, 248', '244, 114, 182', '96, 165, 250']; // Lighter variants
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -25,7 +30,6 @@ const CursorParticles: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Use resize observer for robust sizing
     const handleResize = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -43,31 +47,30 @@ const CursorParticles: React.FC = () => {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Calculate speed for dynamic particles
       const dx = mouse.current.x - lastMouse.current.x;
       const dy = mouse.current.y - lastMouse.current.y;
       const speed = Math.sqrt(dx * dx + dy * dy);
 
-      // Create new particles only if moving
+      // Create new particles
       if (speed > 0.1) {
-         // Add particles based on speed
-         const count = Math.min(Math.floor(speed / 2), 5); // Cap generation
+         const count = Math.min(Math.floor(speed / 3), 4);
          for(let i=0; i<count; i++) {
+             const randomColor = colors[Math.floor(Math.random() * colors.length)];
              particles.current.push({
                  x: mouse.current.x + (Math.random() - 0.5) * 5,
                  y: mouse.current.y + (Math.random() - 0.5) * 5,
-                 size: Math.random() * 2 + 1,
+                 size: Math.random() * 3 + 2, // Start larger (2-5px)
                  life: 1.0,
-                 color: theme === 'light' ? '99, 102, 241' : '129, 140, 248', // Indigo
+                 color: randomColor,
                  vx: (Math.random() - 0.5) * 0.5,
                  vy: (Math.random() - 0.5) * 0.5
              });
          }
       }
 
-      // Update and draw particles
+      // Update and draw
       particles.current.forEach((p, index) => {
-        p.life -= 0.02; // Fade rate
+        p.life -= 0.015; // Slowed down fade rate
         p.x += p.vx;
         p.y += p.vy;
 
@@ -75,7 +78,9 @@ const CursorParticles: React.FC = () => {
             particles.current.splice(index, 1);
         } else {
             ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            // Size decays with life: Start Size * Life %
+            const currentSize = p.size * p.life;
+            ctx.arc(p.x, p.y, Math.max(0, currentSize), 0, Math.PI * 2);
             ctx.fillStyle = `rgba(${p.color}, ${p.life})`;
             ctx.fill();
         }
