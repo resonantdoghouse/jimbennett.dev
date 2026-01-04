@@ -20,8 +20,8 @@ const CursorParticles: React.FC = () => {
 
   // Theme colors for "evolution" effect
   const colors = theme === 'light' 
-    ? ['99, 102, 241', '236, 72, 153', '59, 130, 246'] // Indigo, Pink, Blue
-    : ['129, 140, 248', '244, 114, 182', '96, 165, 250']; // Lighter variants
+    ? ['99, 102, 241', '59, 130, 246'] // Indigo, Blue
+    : ['129, 140, 248', '96, 165, 250']; // Lighter variants
 
   useEffect(() => {
     const canvas = canvasRef.current;
