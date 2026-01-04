@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
             </h1>
             
             <p className="mb-8 text-lg text-text-muted max-w-lg mx-auto md:mx-0">
-              Experienced Engineer combining robust backend logic with immersive front-end interfaces. Expert in <strong>JavaScript, TypeScript, Advanced CSS, and Node.js</strong>.
+              Front End Developer, Team Lead, and Educator combining robust backend logic with immersive front-end interfaces. Expert in <strong>JavaScript, TypeScript, Advanced CSS, and Node.js</strong>.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
