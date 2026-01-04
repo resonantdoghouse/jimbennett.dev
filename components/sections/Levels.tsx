@@ -83,6 +83,20 @@ const Levels: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ProjectCard 
+            title="Place Cats"
+            desc="Free, fast, and adorable cat placeholders for your design projects."
+            tech={['API', 'Node.js', 'Images']}
+            link="https://placecats.com"
+            color="accent"
+          />
+          <ProjectCard 
+            title="Advance Bass"
+            desc="High-quality, accurate transcriptions of modern and classic bass lines, plus interactive practice tools."
+            tech={['Next.js', 'React', 'Music Theory']}
+            link="https://advancebass.com"
+            color="accent-secondary"
+          />
+          <ProjectCard 
             title="The Joy of CSS Art"
             desc="A curated collection of CSS-only art pieces demonstrating the power of modern CSS styling and creative constraints."
             tech={['CSS', 'SCSS', 'Creative Coding']}

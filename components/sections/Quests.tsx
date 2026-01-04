@@ -30,21 +30,39 @@ const Quests: React.FC = () => {
     <section id="quests" className="py-24 relative">
       <div className="max-w-[1100px] mx-auto px-5">
         <h2 className="text-4xl font-extrabold mb-10 flex items-center gap-4 pixel-underline">
-          Current Quests
+          Quests
         </h2>
 
         <div className="flex flex-col gap-6">
           <QuestItem 
+            icon="🎓"
+            title="Lead Educator & Team Lead"
+            date="Jan 2020 - Present"
+            desc="Overseeing rigorous bootcamps covering front-end and back-end development. Mentoring students in JavaScript, React, Node.js, and Express."
+          />
+          <QuestItem 
             icon="💻"
-            title="Senior Full Stack Engineer"
-            date="Present"
-            desc="Architecting scalable web applications using TypeScript, Node.js, and SQL. Leading backend optimization and API design initiatives."
+            title="Senior Web Developer"
+            date="17+ Years Experience"
+            desc="Specializing in creative coding, generative art, and interactive web applications. Expertise in JavaScript, CSS, and modern frameworks."
+          />
+          <QuestItem 
+            icon="🚀"
+            title="Lead Web Development Instructor"
+            date="Jun 2017 - Jan 2020"
+            desc="Designed and taught comprehensive curriculums for WordPress and full-stack development. Mentored students to create professional-grade applications at RED Academy."
+          />
+          <QuestItem 
+            icon="🛠️"
+            title="Web Developer & Project Manager"
+            date="2016 - 2018"
+            desc="Delivered custom WordPress solutions and mobile apps for diverse clients. Managed projects from concept to deployment, ensuring high-quality functional designs."
           />
           <QuestItem 
             icon="🎨"
-            title="Creative Frontend Specialist"
-            date="Freelance"
-            desc="Building immersive user experiences with advanced CSS animations, WebGL, and performance-optimized JavaScript interactions."
+            title="Front End Web Developer"
+            date="Jan 2014 - Nov 2016"
+            desc="Designed mockups and built custom Drupal themes. Created visually stunning, user-friendly websites with high-volume production capabilities."
           />
         </div>
       </div>
