@@ -23,29 +23,33 @@ const Levels: React.FC = () => {
       className="bg-card border border-border group transition-all duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0_var(--text-muted)] flex flex-col h-full"
       onMouseEnter={() => playSound('hover')}
     >
-      <div className="h-48 bg-[#2a2a2a] relative flex items-center justify-center overflow-hidden shrink-0 border-b border-border group-hover:border-accent transition-colors">
-        {image ? (
-          <img 
-            src={image} 
-            alt={`Screenshot of ${title}`}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        ) : (
-          <div 
-            className="w-20 h-14 bg-accent shadow-[4px_4px_0_var(--accent-secondary)]"
-            style={{ background: color ? `var(--${color})` : undefined }} 
-          />
-        )}
-        
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
-        
-        {/* Scanline effect on image */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_2px,3px_100%] pointer-events-none opacity-30"></div>
-      </div>
+      <a href={link || "#"} target="_blank" rel="noopener noreferrer" className="block group">
+        <div className="h-48 bg-[#2a2a2a] relative flex items-center justify-center overflow-hidden shrink-0 border-b border-border group-hover:border-accent transition-colors">
+          {image ? (
+            <img 
+              src={image} 
+              alt={`Screenshot of ${title}`}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div 
+              className="w-20 h-14 bg-accent shadow-[4px_4px_0_var(--accent-secondary)]"
+              style={{ background: color ? `var(--${color})` : undefined }} 
+            />
+          )}
+          
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+          
+          {/* Scanline effect on image */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_2px,3px_100%] pointer-events-none opacity-30"></div>
+        </div>
+      </a>
       
       <div className="p-6 flex flex-col grow">
-        <h3 className="font-bold text-xl mb-3 group-hover:text-accent transition-colors">{title}</h3>
+        <a href={link || "#"} target="_blank" rel="noopener noreferrer" className="block w-fit">
+          <h3 className="font-bold text-xl mb-3 group-hover:text-accent transition-colors">{title}</h3>
+        </a>
         <p className="text-text-muted mb-6 text-sm leading-relaxed grow">{desc}</p>
         
         <div className="mb-6 flex flex-wrap gap-2">
@@ -96,6 +100,7 @@ const Levels: React.FC = () => {
             tech={['Next.js', 'React', 'Music Theory']}
             link="https://advancebass.com"
             color="accent-secondary"
+            image="/assets/portfolio/advance-bass.jpg"
 
           />
           <ProjectCard 
@@ -110,7 +115,7 @@ const Levels: React.FC = () => {
             desc="Interactive 3D terrain visualization using heightmaps and WebGL shaders for performant rendering."
             tech={['Three.js', 'WebGL', 'JavaScript']}
             link="https://threejs-art-heightmap.netlify.app/"
-            image="/assets/portfolio/threejs-heightmap.jpg"
+            image="/assets/portfolio/three-heightmap.jpg"
           />
            <ProjectCard 
             title="Perlin Noise Terrain"
