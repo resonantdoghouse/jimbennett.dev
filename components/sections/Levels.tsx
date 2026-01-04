@@ -88,6 +88,7 @@ const Levels: React.FC = () => {
             tech={['API', 'Node.js', 'Images']}
             link="https://placecats.com"
             color="accent"
+            image="/assets/portfolio/placecats.jpg"
           />
           <ProjectCard 
             title="Advance Bass"
@@ -95,6 +96,7 @@ const Levels: React.FC = () => {
             tech={['Next.js', 'React', 'Music Theory']}
             link="https://advancebass.com"
             color="accent-secondary"
+
           />
           <ProjectCard 
             title="The Joy of CSS Art"
