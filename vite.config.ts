@@ -12,7 +12,9 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          three: ['three', '@react-three/fiber', '@react-three/drei'],
+          three: ['three'],
+          fiber: ['@react-three/fiber'],
+          drei: ['@react-three/drei'],
 
         },
       },
