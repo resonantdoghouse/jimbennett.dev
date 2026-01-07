@@ -1,36 +1,41 @@
-import React from 'react';
-import { useSound } from '../../contexts/SoundContext';
-import { SoundType } from '../../types';
+import React from "react";
+import { useSound } from "../../contexts/SoundContext";
+import { SoundType } from "../../types";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
+interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   children: React.ReactNode;
-  as?: 'button' | 'a';
+  as?: "button" | "a";
   href?: string;
   soundType?: SoundType;
-  variant?: 'primary' | 'icon';
+  variant?: "primary" | "icon";
 }
 
-const Button: React.FC<ButtonProps> = ({ 
-  children, 
-  as = 'button', 
-  soundType = 'click', 
-  variant = 'primary',
-  className = '',
-  ...props 
+const Button: React.FC<ButtonProps> = ({
+  children,
+  as = "button",
+  soundType = "click",
+  variant = "primary",
+  className = "",
+  ...props
 }) => {
   const { playSound } = useSound();
 
   const handleMouseEnter = () => {
-    playSound('hover');
+    playSound("hover");
   };
 
   const handleClick = (e: React.MouseEvent) => {
     playSound(soundType);
-    if (props.onClick) props.onClick(e as any);
+    if (props.onClick)
+      props.onClick(
+        e as React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
+      );
   };
 
-  const baseStyles = "transition-all duration-200 ease-out focus:outline-none focus-visible:ring-4 focus-visible:ring-accent-secondary focus-visible:ring-offset-2";
-  
+  const baseStyles =
+    "transition-all duration-200 ease-out focus:outline-none focus-visible:ring-4 focus-visible:ring-accent-secondary focus-visible:ring-offset-2";
+
   const variants = {
     primary: `
       inline-flex items-center gap-2 px-7 py-3.5 
@@ -44,16 +49,16 @@ const Button: React.FC<ButtonProps> = ({
       p-2 rounded border-2 border-border text-text-main bg-transparent
       hover:bg-accent hover:text-white hover:border-accent
       flex items-center justify-center
-    `
+    `,
   };
 
   const combinedClass = `${baseStyles} ${variants[variant]} ${className}`;
 
-  if (as === 'a') {
+  if (as === "a") {
     return (
-      <a 
-        className={combinedClass} 
-        onMouseEnter={handleMouseEnter} 
+      <a
+        className={combinedClass}
+        onMouseEnter={handleMouseEnter}
         onClick={handleClick}
         {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
@@ -63,9 +68,9 @@ const Button: React.FC<ButtonProps> = ({
   }
 
   return (
-    <button 
-      className={combinedClass} 
-      onMouseEnter={handleMouseEnter} 
+    <button
+      className={combinedClass}
+      onMouseEnter={handleMouseEnter}
       onClick={handleClick}
       {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
     >
