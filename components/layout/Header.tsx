@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Volume2, VolumeX, Moon, Sun, Menu, X } from "lucide-react";
-import { useTheme } from "../../contexts/ThemeContext";
-import { useSound } from "../../contexts/SoundContext";
+import { useTheme } from "../../hooks/useTheme";
+import { useSound } from "../../hooks/useSound";
 import Button from "../ui/Button";
 
 interface NavLinkProps {

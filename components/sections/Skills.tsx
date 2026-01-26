@@ -1,5 +1,5 @@
 import React from "react";
-import { useSound } from "../../contexts/SoundContext";
+import { useSound } from "../../hooks/useSound";
 
 const skillList = [
   "JavaScript",

@@ -1,9 +1,10 @@
 import React from "react";
-import { useSound } from "../../contexts/SoundContext";
+import { useSound } from "../../hooks/useSound";
 import { SoundType } from "../../types";
 
-interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<
+  HTMLButtonElement | HTMLAnchorElement
+> {
   children: React.ReactNode;
   as?: "button" | "a";
   href?: string;
@@ -29,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({
     playSound(soundType);
     if (props.onClick)
       props.onClick(
-        e as React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
+        e as React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
       );
   };
 

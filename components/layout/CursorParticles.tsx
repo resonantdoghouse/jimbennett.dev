@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useMemo } from "react";
-import { useTheme } from "../../contexts/ThemeContext";
+import { useTheme } from "../../hooks/useTheme";
 
 interface Particle {
   x: number;
@@ -24,7 +24,7 @@ const CursorParticles: React.FC = () => {
       theme === "light"
         ? ["99, 102, 241", "59, 130, 246"] // Indigo, Blue
         : ["129, 140, 248", "96, 165, 250"],
-    [theme]
+    [theme],
   ); // Lighter variants
 
   useEffect(() => {

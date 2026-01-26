@@ -1,14 +1,8 @@
 /* eslint-disable react-hooks/preserve-manual-memoization */
-import React, {
-  createContext,
-  useContext,
-  useRef,
-  useState,
-  useCallback,
-} from "react";
-import { SoundContextType, SoundType } from "../types";
+import React, { useRef, useState, useCallback } from "react";
+import { SoundType } from "../types";
 
-const SoundContext = createContext<SoundContextType | undefined>(undefined);
+import { SoundContext } from "./SoundContextDefinition";
 
 export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -94,7 +88,7 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({
           break;
       }
     },
-    [isEnabled]
+    [isEnabled],
   );
 
   return (
@@ -102,10 +96,4 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({
       {children}
     </SoundContext.Provider>
   );
-};
-
-export const useSound = () => {
-  const context = useContext(SoundContext);
-  if (!context) throw new Error("useSound must be used within a SoundProvider");
-  return context;
 };
