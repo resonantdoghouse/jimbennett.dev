@@ -31,18 +31,18 @@ const Stats: React.FC = () => {
             onHover={() => playSound("blip")}
           />
           <StatItem
-            num="Expert"
-            label="Debugging"
+            num="Team Lead"
+            label="& Mentor"
             onHover={() => playSound("blip")}
           />
           <StatItem
-            num="Active"
-            label="Mentoring"
+            num="Full Stack"
+            label="React • Node • SQL"
             onHover={() => playSound("blip")}
           />
            <StatItem
-            num="Always"
-            label="Lifelong Learner"
+            num="DevOps"
+            label="Cloud Deployments"
             onHover={() => playSound("blip")}
           />
         </div>
