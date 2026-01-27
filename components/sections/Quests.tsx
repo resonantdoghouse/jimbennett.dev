@@ -4,6 +4,7 @@ import { useSound } from "../../hooks/useSound";
 interface QuestItemProps {
   icon: string;
   title: string;
+  company: string;
   date: string;
   desc: string;
   onHover: () => void;
@@ -12,6 +13,7 @@ interface QuestItemProps {
 const QuestItem: React.FC<QuestItemProps> = ({
   icon,
   title,
+  company,
   date,
   desc,
   onHover,
@@ -29,6 +31,7 @@ const QuestItem: React.FC<QuestItemProps> = ({
 
     <div>
       <h3 className="font-bold text-xl mb-1">{title}</h3>
+      <h4 className="text-accent font-bold mb-2">{company}</h4>
       <span className="font-mono text-xs bg-background px-2 py-1 border border-border inline-block mb-3">
         {date}
       </span>
@@ -51,20 +54,15 @@ const Quests: React.FC = () => {
           <QuestItem
             icon="🎓"
             title="Lead Educator & Team Lead"
+            company="BrainStation"
             date="Jan 2020 - Present"
             desc="Overseeing rigorous bootcamps covering front-end and back-end development. Mentoring students in JavaScript, React, Node.js, and Express."
             onHover={() => playSound("hover")}
           />
           <QuestItem
-            icon="💻"
-            title="Senior Web Developer"
-            date="17+ Years Experience"
-            desc="Specializing in creative coding, generative art, and interactive web applications. Expertise in JavaScript, CSS, and modern frameworks."
-            onHover={() => playSound("hover")}
-          />
-          <QuestItem
             icon="🚀"
             title="Lead Web Development Instructor"
+            company="Red Academy"
             date="Jun 2017 - Jan 2020"
             desc="Designed and taught comprehensive curriculums for WordPress and full-stack development. Mentored students to create professional-grade applications at RED Academy."
             onHover={() => playSound("hover")}
@@ -72,6 +70,7 @@ const Quests: React.FC = () => {
           <QuestItem
             icon="🛠️"
             title="Web Developer & Project Manager"
+            company="Freelance - Build Creative Websites"
             date="2016 - 2018"
             desc="Delivered custom WordPress solutions and mobile apps for diverse clients. Managed projects from concept to deployment, ensuring high-quality functional designs."
             onHover={() => playSound("hover")}
@@ -79,6 +78,7 @@ const Quests: React.FC = () => {
           <QuestItem
             icon="🎨"
             title="Front End Web Developer"
+            company="Advisor Websites"
             date="Jan 2014 - Nov 2016"
             desc="Designed mockups and built custom Drupal themes. Created visually stunning, user-friendly websites with high-volume production capabilities."
             onHover={() => playSound("hover")}
