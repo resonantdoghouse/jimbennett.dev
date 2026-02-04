@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Volume2, VolumeX, Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "../../hooks/useTheme";
 import { useSound } from "../../hooks/useSound";
@@ -8,7 +9,7 @@ interface NavLinkProps {
   href: string;
   children: React.ReactNode;
   onHover: () => void;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 const NavLink: React.FC<NavLinkProps> = ({
@@ -32,10 +33,25 @@ const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const { isEnabled, toggleSound, playSound } = useSound();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleNavClick = () => {
+  const handleNavClick = (e: React.MouseEvent<HTMLElement>, href: string) => {
+    e.preventDefault();
     playSound("click");
     setIsMobileMenuOpen(false);
+
+    if (location.pathname === "/") {
+      const id = href.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        // Optional: Update URL hash without jumping
+        window.history.pushState(null, "", href);
+      }
+    } else {
+      navigate("/" + href);
+    }
   };
 
   const handleHover = () => playSound("hover");
@@ -50,7 +66,12 @@ const Header: React.FC = () => {
         >
           {/* Logo */}
           <a
-            href="#"
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              if (location.pathname !== "/") navigate("/");
+              else window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
             className="font-pixel text-sm md:text-base text-accent drop-shadow-[2px_2px_0_var(--accent-secondary)]"
             onMouseEnter={() => playSound("coin")}
           >
@@ -63,7 +84,7 @@ const Header: React.FC = () => {
               <NavLink
                 href="#quests"
                 onHover={handleHover}
-                onClick={handleNavClick}
+                onClick={(e: any) => handleNavClick(e, "#quests")}
               >
                 Quests (Work)
               </NavLink>
@@ -72,7 +93,7 @@ const Header: React.FC = () => {
               <NavLink
                 href="#levels"
                 onHover={handleHover}
-                onClick={handleNavClick}
+                onClick={(e: any) => handleNavClick(e, "#levels")}
               >
                 Levels (Projects)
               </NavLink>
@@ -81,7 +102,7 @@ const Header: React.FC = () => {
               <NavLink
                 href="#contact"
                 onHover={handleHover}
-                onClick={handleNavClick}
+                onClick={(e: any) => handleNavClick(e, "#contact")}
               >
                 Contact
               </NavLink>
@@ -129,21 +150,21 @@ const Header: React.FC = () => {
           <NavLink
             href="#quests"
             onHover={handleHover}
-            onClick={handleNavClick}
+            onClick={(e: any) => handleNavClick(e, "#quests")}
           >
             Quests
           </NavLink>
           <NavLink
             href="#levels"
             onHover={handleHover}
-            onClick={handleNavClick}
+            onClick={(e: any) => handleNavClick(e, "#levels")}
           >
             Levels
           </NavLink>
           <NavLink
             href="#contact"
             onHover={handleHover}
-            onClick={handleNavClick}
+            onClick={(e: any) => handleNavClick(e, "#contact")}
           >
             Contact
           </NavLink>

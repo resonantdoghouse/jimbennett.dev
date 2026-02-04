@@ -1,6 +1,6 @@
-export type Theme = 'light' | 'dark';
+export type Theme = "light" | "dark";
 
-export type SoundType = 'hover' | 'click' | 'start' | 'blip' | 'coin';
+export type SoundType = "hover" | "click" | "start" | "blip" | "coin";
 
 export interface SoundContextType {
   isEnabled: boolean;
@@ -20,6 +20,9 @@ export interface Project {
   tech: string[];
   link: string;
   color?: string;
+  slug: string;
+  longDescription?: string;
+  images?: string[];
 }
 
 export interface Quest {
