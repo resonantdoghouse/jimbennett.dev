@@ -23,6 +23,7 @@ export interface Project {
   slug: string;
   longDescription?: string;
   images?: string[];
+  githubUrl?: string;
 }
 
 export interface Quest {

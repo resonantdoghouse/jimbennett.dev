@@ -29,7 +29,7 @@ const ProjectDetail: React.FC = () => {
           onClick={() => playSound("click")}
         >
           <span>{"<"}</span>
-          <span className="group-hover:underline">BACK TO TERMINAL</span>
+          <span className="group-hover:underline">BACK</span>
         </Link>
         {/* Title Section */}
         <header className="mb-12 border-b border-border pb-8">
@@ -56,7 +56,7 @@ const ProjectDetail: React.FC = () => {
             <section className="prose prose-invert max-w-none">
               <h2 className="text-2xl font-bold mb-6 text-accent flex items-center gap-3">
                 <span className="inline-block w-2 h-8 bg-accent"></span>
-                MISSION_BRIEFING
+                Project Details
               </h2>
               <div className="bg-card/50 border border-border p-8 backdrop-blur-sm leading-8 text-lg text-text-muted">
                 {project.longDescription ? (
@@ -74,7 +74,7 @@ const ProjectDetail: React.FC = () => {
               <section>
                 <h2 className="text-2xl font-bold mb-6 text-accent flex items-center gap-3">
                   <span className="inline-block w-2 h-8 bg-accent-secondary"></span>
-                  VISUAL_RECORDS
+                  Screenshots
                 </h2>
                 <div className="border-2 border-border p-2 bg-card rounded-lg shadow-2xl">
                   <img
@@ -83,7 +83,7 @@ const ProjectDetail: React.FC = () => {
                     className="w-full h-auto rounded grayscale-[20%] hover:grayscale-0 transition-all duration-500"
                   />
                   <div className="mt-2 text-center font-mono text-xs text-text-muted/60">
-                    FIG. 01 // INTERFACE_VIEW_MAIN
+                    Project Screenshot
                   </div>
                 </div>
               </section>
@@ -101,28 +101,13 @@ const ProjectDetail: React.FC = () => {
                 <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-accent opacity-50"></div>
 
                 <h3 className="font-bold text-xl mb-6 border-b border-border pb-2 flex justify-between items-center">
-                  <span>DATA_LOG</span>
+                  <span>Resources</span>
                   <div className="flex gap-1">
                     <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
                     <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
                     <div className="w-2 h-2 rounded-full bg-green-500"></div>
                   </div>
                 </h3>
-
-                <div className="space-y-6 font-mono text-sm">
-                  <div className="flex justify-between items-center border-b border-border/50 pb-2">
-                    <span className="text-text-muted">STATUS</span>
-                    <span className="text-accent">CLASSIFIED</span>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-border/50 pb-2">
-                    <span className="text-text-muted">ACCESS_LEVEL</span>
-                    <span className="text-accent">PUBLIC</span>
-                  </div>
-                  <div className="flex justify-between items-center border-b border-border/50 pb-2">
-                    <span className="text-text-muted">DEPLOYMENT</span>
-                    <span className="text-accent">NETLIFY</span>
-                  </div>
-                </div>
 
                 <div className="mt-8 space-y-3">
                   <a
@@ -132,31 +117,26 @@ const ProjectDetail: React.FC = () => {
                     className="flex items-center justify-between group p-4 border border-accent/50 hover:bg-accent hover:text-white transition-all duration-300 bg-accent/5"
                     onClick={() => playSound("click")}
                   >
-                    <span className="font-bold">LAUNCH_PROJECT</span>
+                    <span className="font-bold">Launch Project</span>
                     <span className="transform group-hover:translate-x-1 transition-transform">
                       ↗
                     </span>
                   </a>
 
-                  <button
-                    disabled
-                    className="flex items-center justify-between w-full p-4 border border-border text-text-muted cursor-not-allowed bg-background/50 opacity-60"
-                  >
-                    <span>SOURCE_CODE</span>
-                    <span>Login Required</span>
-                  </button>
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between group p-4 border border-accent/50 hover:bg-accent hover:text-white transition-all duration-300 bg-accent/5"
+                    >
+                      <span className="font-bold">GitHub Repo</span>
+                      <span className="transform group-hover:translate-x-1 transition-transform">
+                        ↗
+                      </span>
+                    </a>
+                  )}
                 </div>
-              </div>
-
-              {/* Additional Info / Tags */}
-              <div className="p-6 bg-accent/5 border border-accent/10 rounded-lg">
-                <p className="font-mono text-xs text-text-muted leading-relaxed">
-                  &gt; This file has been recovered from the archives.
-                  <br />
-                  &gt; Some data may be corrupted or missing.
-                  <br />
-                  &gt; Proceed with caution.
-                </p>
               </div>
             </div>
           </aside>
