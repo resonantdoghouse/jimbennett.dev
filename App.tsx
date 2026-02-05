@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { SoundProvider } from "./contexts/SoundContext";
 
@@ -8,45 +8,32 @@ import CursorParticles from "./components/layout/CursorParticles";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 
-import Hero from "./components/sections/Hero";
-
-const Stats = lazy(() => import("./components/sections/Stats"));
-const Skills = lazy(() => import("./components/sections/Skills"));
-const Quests = lazy(() => import("./components/sections/Quests"));
-const Levels = lazy(() => import("./components/sections/Levels"));
-const Contact = lazy(() => import("./components/sections/Contact"));
+import Home from "./pages/Home";
+import ProjectDetail from "./pages/ProjectDetail";
 
 function App() {
   return (
     <ThemeProvider>
       <SoundProvider>
-        <main className="relative min-h-screen bg-background text-text-main font-main transition-colors duration-300">
-          {/* Global Overlays */}
-          <Scanlines />
-          <CursorParticles />
-          <Cursor />
+        <Router>
+          <main className="relative min-h-screen bg-background text-text-main font-main transition-colors duration-300">
+            {/* Global Overlays */}
+            <Scanlines />
+            <CursorParticles />
+            <Cursor />
 
-          {/* Navigation */}
-          <Header />
+            {/* Navigation */}
+            <Header />
 
-          {/* Content */}
-          <Hero />
-          <Suspense
-            fallback={
-              <div className="h-screen w-full flex items-center justify-center text-accent">
-                Loading...
-              </div>
-            }
-          >
-            <Stats />
-            <Skills />
-            <Quests />
-            <Levels />
-            <Contact />
-          </Suspense>
+            {/* Content */}
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/projects/:slug" element={<ProjectDetail />} />
+            </Routes>
 
-          <Footer />
-        </main>
+            <Footer />
+          </main>
+        </Router>
       </SoundProvider>
     </ThemeProvider>
   );

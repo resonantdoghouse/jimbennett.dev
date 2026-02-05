@@ -1,46 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useSound } from "../../hooks/useSound";
+import { projects } from "../../data/projects";
+import { Project } from "../../types";
 
 interface ProjectCardProps {
-  title: string;
-  desc: string;
-  tech: string[];
-  color?: string;
-  link?: string;
-  image?: string;
+  project: Project;
   onHover: () => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({
-  title,
-  desc,
-  tech,
-  color,
-  link,
-  image,
-  onHover,
-}) => (
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onHover }) => (
   <article
     className="bg-card border border-border group transition-all duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0_var(--text-muted)] flex flex-col h-full"
     onMouseEnter={onHover}
   >
-    <a
-      href={link || "#"}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block group"
-    >
+    <Link to={`/projects/${project.slug}`} className="block group">
       <div className="h-48 bg-[#2a2a2a] relative flex items-center justify-center overflow-hidden shrink-0 border-b border-border group-hover:border-accent transition-colors">
-        {image ? (
+        {project.images && project.images.length > 0 ? (
           <img
-            src={image}
-            alt={`Screenshot of ${title}`}
+            src={project.images[0]}
+            alt={`Screenshot of ${project.title}`}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div
             className="w-20 h-14 bg-accent shadow-[4px_4px_0_var(--accent-secondary)]"
-            style={{ background: color ? `var(--${color})` : undefined }}
+            style={{
+              background: project.color ? `var(--${project.color})` : undefined,
+            }}
           />
         )}
 
@@ -50,25 +37,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         {/* Scanline effect on image */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_2px,3px_100%] pointer-events-none opacity-30"></div>
       </div>
-    </a>
+    </Link>
 
     <div className="p-6 flex flex-col grow">
-      <a
-        href={link || "#"}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block w-fit"
-      >
+      <Link to={`/projects/${project.slug}`} className="block w-fit">
         <h3 className="font-bold text-xl mb-3 group-hover:text-accent transition-colors">
-          {title}
+          {project.title}
         </h3>
-      </a>
+      </Link>
       <p className="text-text-muted mb-6 text-sm leading-relaxed grow">
-        {desc}
+        {project.description}
       </p>
 
       <div className="mb-6 flex flex-wrap gap-2">
-        {tech.map((t) => (
+        {project.tech.map((t) => (
           <span
             key={t}
             className="font-mono text-[10px] uppercase tracking-wider bg-background px-2 py-1 border border-border text-text-muted"
@@ -78,15 +60,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         ))}
       </div>
 
-      <a
-        href={link || "#"}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-bold font-mono text-sm text-accent hover:text-accent-secondary hover:underline inline-flex items-center gap-2 mt-auto"
-      >
-        <span>VIEW PROJECT</span>
-        <span>{">"}</span>
-      </a>
+      <div className="flex items-center gap-4 mt-auto">
+        <Link
+          to={`/projects/${project.slug}`}
+          className="font-bold font-mono text-sm text-accent hover:text-accent-secondary hover:underline inline-flex items-center gap-2"
+        >
+          <span>CASE STUDY</span>
+          <span>{">"}</span>
+        </Link>
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-bold font-mono text-sm text-text-muted hover:text-text-main hover:underline inline-flex items-center gap-2 ml-auto"
+        >
+          <span>VISIT</span>
+          <span>↗</span>
+        </a>
+      </div>
     </div>
   </article>
 );
@@ -118,56 +109,13 @@ const Levels: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <ProjectCard
-            title="Place Cats"
-            desc="Free, fast, and adorable cat placeholders for your design projects."
-            tech={["API", "Node.js", "Images"]}
-            link="https://placecats.com"
-            color="accent"
-            image="/assets/portfolio/placecats.jpg"
-            onHover={() => playSound("hover")}
-          />
-          <ProjectCard
-            title="Advance Bass"
-            desc="High-quality, accurate transcriptions of modern and classic bass lines, plus interactive practice tools."
-            tech={["Next.js", "React", "Music Theory"]}
-            link="https://advancebass.com"
-            color="accent-secondary"
-            image="/assets/portfolio/advance-bass.jpg"
-            onHover={() => playSound("hover")}
-          />
-          <ProjectCard
-            title="React Player Piano"
-            desc="A piano keyboard player that plays selected songs with left and right hand visuals."
-            tech={["React", "SCSS", "Creative Coding"]}
-            link="https://react-player-piano.netlify.app/"
-            image="/assets/portfolio/react-player-piano.jpg"
-            onHover={() => playSound("hover")}
-          />
-          <ProjectCard
-            title="Three.js Heightmap"
-            desc="Interactive 3D terrain visualization using heightmaps and WebGL shaders for performant rendering."
-            tech={["Three.js", "WebGL", "JavaScript"]}
-            link="https://threejs-art-heightmap.netlify.app/"
-            image="/assets/portfolio/three-heightmap.jpg"
-            onHover={() => playSound("hover")}
-          />
-          <ProjectCard
-            title="Perlin Noise Terrain"
-            desc="Procedural terrain generation using Perlin noise algorithms and p5.js for organic pattern creation."
-            tech={["p5.js", "Algorithms", "JavaScript"]}
-            link="https://p5-perlin-terrain.netlify.app/"
-            image="/assets/portfolio/perlin-noise.jpg"
-            onHover={() => playSound("hover")}
-          />
-          <ProjectCard
-            title="Interactive Experiments"
-            desc="A featured CodePen demonstration exploring advanced frontend techniques, animation loops, and interactive UI concepts."
-            tech={["CodePen", "CSS3", "Animation"]}
-            link="https://codepen.io/jimbennett/full/Odyapv"
-            image="/assets/portfolio/interactive-experiments.jpg"
-            onHover={() => playSound("hover")}
-          />
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onHover={() => playSound("hover")}
+            />
+          ))}
         </div>
       </div>
     </section>
