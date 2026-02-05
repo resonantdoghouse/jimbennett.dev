@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { projects } from "../data/projects";
 import { useSound } from "../hooks/useSound";
 
@@ -16,6 +17,29 @@ const ProjectDetail: React.FC = () => {
     }
     window.scrollTo(0, 0);
   }, [project, navigate]);
+
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const nextImage = useCallback(() => {
+    if (!project?.images) return;
+    setActiveImageIndex((prev) => (prev + 1) % project.images!.length);
+  }, [project?.images]);
+
+  const prevImage = useCallback(() => {
+    if (!project?.images) return;
+    setActiveImageIndex((prev) =>
+      prev === 0 ? project.images!.length - 1 : prev - 1,
+    );
+  }, [project?.images]);
+
+  useEffect(() => {
+    if (isHovered) return;
+    const timer = setInterval(() => {
+      nextImage();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [isHovered, nextImage]);
 
   if (!project) return null;
 
@@ -76,14 +100,83 @@ const ProjectDetail: React.FC = () => {
                   <span className="inline-block w-2 h-8 bg-accent-secondary"></span>
                   Screenshots
                 </h2>
-                <div className="border-2 border-border p-2 bg-card rounded-lg shadow-2xl">
-                  <img
-                    src={project.images[0]}
-                    alt={`Design Interface of ${project.title}`}
-                    className="w-full h-auto rounded grayscale-[20%] hover:grayscale-0 transition-all duration-500"
-                  />
-                  <div className="mt-2 text-center font-mono text-xs text-text-muted/60">
-                    Project Screenshot
+                <div className="space-y-6">
+                  {/* Main Image Stage */}
+                  <div
+                    className="relative border-2 border-border p-2 bg-card rounded-lg shadow-2xl overflow-hidden group"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
+                    <div className="relative aspect-video overflow-hidden rounded bg-black/50">
+                      <img
+                        src={project.images[activeImageIndex]}
+                        alt={`Screenshot ${activeImageIndex + 1} of ${project.title}`}
+                        className="w-full h-full object-contain transition-all duration-500"
+                      />
+
+                      {/* Navigation Overlays */}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          playSound("click");
+                          prevImage();
+                        }}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-accent"
+                        aria-label="Previous image"
+                      >
+                        <ChevronLeft size={24} />
+                      </button>
+
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          playSound("click");
+                          nextImage();
+                        }}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-accent"
+                        aria-label="Next image"
+                      >
+                        <ChevronRight size={24} />
+                      </button>
+
+                      {/* Progress Indicator */}
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                        {project.images.map((_, idx) => (
+                          <div
+                            key={idx}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${
+                              idx === activeImageIndex
+                                ? "w-8 bg-accent"
+                                : "w-2 bg-white/50"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Thumbnails */}
+                  <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
+                    {project.images.map((img, index) => (
+                      <button
+                        key={index}
+                        onClick={() => {
+                          playSound("click");
+                          setActiveImageIndex(index);
+                        }}
+                        className={`relative rounded overflow-hidden border-2 transition-all ${
+                          index === activeImageIndex
+                            ? "border-accent opacity-100 scale-105 shadow-lg"
+                            : "border-transparent opacity-60 hover:opacity-100 hover:border-accent/50"
+                        }`}
+                      >
+                        <img
+                          src={img}
+                          alt={`Thumbnail ${index + 1}`}
+                          className="w-full h-full object-cover aspect-video"
+                        />
+                      </button>
+                    ))}
                   </div>
                 </div>
               </section>
