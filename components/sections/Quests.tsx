@@ -96,7 +96,7 @@ const Quests: React.FC = () => {
             title="Web Developer, Designer & SEO Strategist"
             company="Vancouver Media Group"
             date="2006 - 2009"
-            desc="Worked on websites for Whistler Olympic Accommodations and Financial Advisors. Developed solutions mainly based on Joomla with extensive customizations, styling, JavaScript, and jQuery."
+            desc="Worked on websites for Whistler Olympic Accommodations and Financial Advisors using Joomla, JavaScript, and jQuery. Developed the Hardcore Championship Fighting project, creating interactive Flash fighter cards, the main website, fighter cutouts, TV/web graphics, and composed the project's music."
             onHover={() => playSound("hover")}
           />
         </div>
