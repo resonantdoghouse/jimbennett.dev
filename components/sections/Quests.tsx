@@ -91,6 +91,14 @@ const Quests: React.FC = () => {
             desc="Developed and maintained a diverse portfolio of company and client websites utilizing the Drupal CMS framework. Prototyped and built interactive touch-screen applications using Adobe Flex to create specialized user experiences for kiosk hardware."
             onHover={() => playSound("hover")}
           />
+          <QuestItem
+            icon="📈"
+            title="Web Developer, Designer & SEO Strategist"
+            company="Vancouver Media Group"
+            date="2006 - 2009"
+            desc="Worked on websites for Whistler Olympic Accommodations and Financial Advisors. Developed solutions mainly based on Joomla with extensive customizations, styling, JavaScript, and jQuery."
+            onHover={() => playSound("hover")}
+          />
         </div>
       </div>
     </section>
