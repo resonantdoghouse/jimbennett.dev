@@ -83,6 +83,14 @@ const Quests: React.FC = () => {
             desc="Designed mockups and built custom Drupal themes. Created visually stunning, user-friendly websites with high-volume production capabilities."
             onHover={() => playSound("hover")}
           />
+          <QuestItem
+            icon="💻"
+            title="Web Developer"
+            company="Qwick Media"
+            date="2009 - 2013"
+            desc="Developed and maintained a diverse portfolio of company and client websites utilizing the Drupal CMS framework. Prototyped and built interactive touch-screen applications using Adobe Flex to create specialized user experiences for kiosk hardware."
+            onHover={() => playSound("hover")}
+          />
         </div>
       </div>
     </section>
