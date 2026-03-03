@@ -28,10 +28,13 @@ const MATRIX = [
 const InteractiveVoxel: React.FC<{
   position: [number, number, number];
   color: string;
-}> = ({ position, color }) => {
+  isRandomlySpinning?: boolean;
+}> = ({ position, color, isRandomlySpinning = false }) => {
   const meshRef = useRef<THREE.Mesh>(null);
-  const [isSpinning, setIsSpinning] = useState(false);
+  const [isHoverSpinning, setIsHoverSpinning] = useState(false);
   const rotationVelocity = useRef(0);
+
+  const isSpinning = isHoverSpinning || isRandomlySpinning;
 
   useFrame((_, delta) => {
     if (meshRef.current) {
@@ -71,8 +74,8 @@ const InteractiveVoxel: React.FC<{
       position={position}
       onClick={(e) => {
         e.stopPropagation();
-        setIsSpinning(true);
-        setTimeout(() => setIsSpinning(false), 500);
+        setIsHoverSpinning(true);
+        setTimeout(() => setIsHoverSpinning(false), 500);
       }}
       onPointerOver={(e) => {
         e.stopPropagation();
@@ -170,25 +173,44 @@ const VoxelGroup: React.FC = () => {
     }
   });
 
-  const [groupX, setGroupX] = useState(0);
+  // Random spinning logic
+  const [spinningVoxelIndex, setSpinningVoxelIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    const updatePosition = () => {
-      // Move the group to the right on desktop, keep centered on mobile
-      setGroupX(window.innerWidth >= 768 ? 4 : 0);
+    if (voxels.length === 0) return;
+
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    const triggerRandomSpin = () => {
+      // Pick a random voxel
+      const randomIndex = Math.floor(Math.random() * voxels.length);
+      setSpinningVoxelIndex(randomIndex);
+
+      // Stop spinning after 500ms (same duration as click)
+      setTimeout(() => {
+        setSpinningVoxelIndex(null);
+      }, 500);
+
+      // Schedule next spin between 10s and 20s
+      const nextDelay = 10000 + Math.random() * 10000;
+      timeoutId = setTimeout(triggerRandomSpin, nextDelay);
     };
-    updatePosition();
-    window.addEventListener("resize", updatePosition);
-    return () => window.removeEventListener("resize", updatePosition);
-  }, []);
+
+    // Initial trigger
+    const initialDelay = 10000 + Math.random() * 10000;
+    timeoutId = setTimeout(triggerRandomSpin, initialDelay);
+
+    return () => clearTimeout(timeoutId);
+  }, [voxels.length]);
 
   return (
-    <group ref={groupRef} position={[groupX, 0, 0]}>
+    <group ref={groupRef} scale={0.65}>
       {voxels.map((pos, i) => (
         <InteractiveVoxel
           key={`voxel-${i}`}
           position={[pos.x, pos.y, pos.z]}
           color={pos.color}
+          isRandomlySpinning={spinningVoxelIndex === i}
         />
       ))}
 
@@ -317,20 +339,26 @@ const Scene: React.FC = () => {
     }
   });
 
-  if (!isSupported) {
-    return <FallbackDisplay message="[GRAPHICS_MODULE_OFFLINE]" />;
-  }
-
   const [sceneX, setSceneX] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const updatePosition = () => {
       setSceneX(window.innerWidth >= 768 ? 4 : 0);
+      setIsMobile(window.innerWidth < 768);
     };
     updatePosition();
     window.addEventListener("resize", updatePosition);
     return () => window.removeEventListener("resize", updatePosition);
   }, []);
+
+  if (!isSupported) {
+    return <FallbackDisplay message="[GRAPHICS_MODULE_OFFLINE]" />;
+  }
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <WebGLErrorBoundary
@@ -351,29 +379,31 @@ const Scene: React.FC = () => {
 
         <Environment preset="city" />
 
-        <PresentationControls
-          global
-          rotation={[0, 0, 0]}
-          polar={[-Math.PI / 3, Math.PI / 3]}
-          azimuth={[-Math.PI / 1.4, Math.PI / 2]}
-        >
-          <Float
-            speed={1}
-            rotationIntensity={0.5}
-            floatIntensity={0.5}
-            floatingRange={[-0.05, 0.05]}
+        <group position={[sceneX, 0, 0]}>
+          <PresentationControls
+            global
+            rotation={[0, 0, 0]}
+            polar={[-Math.PI / 3, Math.PI / 3]}
+            azimuth={[-Math.PI / 1.4, Math.PI / 2]}
           >
-            <VoxelGroup />
-          </Float>
-        </PresentationControls>
+            <Float
+              speed={1}
+              rotationIntensity={0.5}
+              floatIntensity={0.5}
+              floatingRange={[-0.05, 0.05]}
+            >
+              <VoxelGroup />
+            </Float>
+          </PresentationControls>
 
-        <ContactShadows
-          position={[sceneX, -3.5, 0]}
-          opacity={0.4}
-          scale={20}
-          blur={2}
-          far={4.5}
-        />
+          <ContactShadows
+            position={[0, -3.5, 0]}
+            opacity={0.4}
+            scale={20}
+            blur={2}
+            far={4.5}
+          />
+        </group>
 
         <Stars
           radius={50}

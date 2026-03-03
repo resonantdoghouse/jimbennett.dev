@@ -84,7 +84,7 @@ const Header: React.FC = () => {
               <NavLink
                 href="#quests"
                 onHover={handleHover}
-                onClick={(e: any) => handleNavClick(e, "#quests")}
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "#quests")}
               >
                 Quests (Work)
               </NavLink>
@@ -93,7 +93,7 @@ const Header: React.FC = () => {
               <NavLink
                 href="#levels"
                 onHover={handleHover}
-                onClick={(e: any) => handleNavClick(e, "#levels")}
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "#levels")}
               >
                 Levels (Projects)
               </NavLink>
@@ -102,7 +102,7 @@ const Header: React.FC = () => {
               <NavLink
                 href="#contact"
                 onHover={handleHover}
-                onClick={(e: any) => handleNavClick(e, "#contact")}
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "#contact")}
               >
                 Contact
               </NavLink>
@@ -150,21 +150,21 @@ const Header: React.FC = () => {
           <NavLink
             href="#quests"
             onHover={handleHover}
-            onClick={(e: any) => handleNavClick(e, "#quests")}
+            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "#quests")}
           >
             Quests
           </NavLink>
           <NavLink
             href="#levels"
             onHover={handleHover}
-            onClick={(e: any) => handleNavClick(e, "#levels")}
+            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "#levels")}
           >
             Levels
           </NavLink>
           <NavLink
             href="#contact"
             onHover={handleHover}
-            onClick={(e: any) => handleNavClick(e, "#contact")}
+            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "#contact")}
           >
             Contact
           </NavLink>
