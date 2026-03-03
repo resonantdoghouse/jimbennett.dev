@@ -99,6 +99,58 @@
       0 10px
     );
   }
+
+  @keyframes gradientX {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient-x {
+    animation: gradientX 15s ease infinite;
+  }
+
+  .bg-hero-gradient {
+    /* Uses CSS variables to create a smooth, large animated gradient */
+    background:
+      radial-gradient(circle at top left, var(--accent) 0%, transparent 30%),
+      radial-gradient(
+        circle at bottom right,
+        var(--accent-secondary) 0%,
+        transparent 30%
+      );
+    background-size: 200% 200%;
+    opacity: 0.15;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+    opacity: 0.2;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(
+      circle at center,
+      black 30%,
+      transparent 70%
+    );
+  }
 }
 
 /* Hide scrollbar for cleaner look */

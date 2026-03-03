@@ -5,6 +5,10 @@ import Button from '../ui/Button';
 const Hero: React.FC = () => {
   return (
     <section id="hero" className="min-h-screen flex items-center relative overflow-hidden py-24 md:py-0">
+      {/* Animated Background Elements */}
+      <div className="bg-hero-gradient animate-gradient-x"></div>
+      <div className="bg-grid-pattern"></div>
+      
       <div className="max-w-[1100px] mx-auto px-5 w-full relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-center md:text-left">
           
