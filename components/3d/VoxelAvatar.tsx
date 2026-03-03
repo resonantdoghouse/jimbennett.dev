@@ -1,7 +1,17 @@
 import React, { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, PresentationControls, Environment, ContactShadows, Stars } from "@react-three/drei";
-import { EffectComposer, Bloom, ChromaticAberration } from "@react-three/postprocessing";
+import {
+  Float,
+  PresentationControls,
+  Environment,
+  ContactShadows,
+  Stars,
+} from "@react-three/drei";
+import {
+  EffectComposer,
+  Bloom,
+  ChromaticAberration,
+} from "@react-three/postprocessing";
 import { useTheme } from "../../hooks/useTheme";
 import * as THREE from "three";
 import { useMousePosition } from "../../hooks/useMousePosition";
@@ -15,7 +25,10 @@ const MATRIX = [
   [0, 1, 0, 1, 0],
 ];
 
-const InteractiveVoxel: React.FC<{ position: [number, number, number]; color: string }> = ({ position, color }) => {
+const InteractiveVoxel: React.FC<{
+  position: [number, number, number];
+  color: string;
+}> = ({ position, color }) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const [isSpinning, setIsSpinning] = useState(false);
   const rotationVelocity = useRef(0);
@@ -23,24 +36,38 @@ const InteractiveVoxel: React.FC<{ position: [number, number, number]; color: st
   useFrame((_, delta) => {
     if (meshRef.current) {
       if (isSpinning) {
-        rotationVelocity.current = Math.min(rotationVelocity.current + delta * 20, 25);
+        rotationVelocity.current = Math.min(
+          rotationVelocity.current + delta * 20,
+          25,
+        );
       } else {
-        rotationVelocity.current = Math.max(rotationVelocity.current - delta * 15, 0);
+        rotationVelocity.current = Math.max(
+          rotationVelocity.current - delta * 15,
+          0,
+        );
       }
-      
+
       if (rotationVelocity.current > 0) {
         meshRef.current.rotation.x += rotationVelocity.current * delta;
         meshRef.current.rotation.y += rotationVelocity.current * delta;
       } else if (!isSpinning) {
-        meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, 0, 0.1);
-        meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, 0, 0.1);
+        meshRef.current.rotation.x = THREE.MathUtils.lerp(
+          meshRef.current.rotation.x,
+          0,
+          0.1,
+        );
+        meshRef.current.rotation.y = THREE.MathUtils.lerp(
+          meshRef.current.rotation.y,
+          0,
+          0.1,
+        );
       }
     }
   });
 
   return (
-    <mesh 
-      ref={meshRef} 
+    <mesh
+      ref={meshRef}
       position={position}
       onClick={(e) => {
         e.stopPropagation();
@@ -49,19 +76,22 @@ const InteractiveVoxel: React.FC<{ position: [number, number, number]; color: st
       }}
       onPointerOver={(e) => {
         e.stopPropagation();
-        document.body.style.cursor = 'pointer';
+        document.body.style.cursor = "pointer";
       }}
       onPointerOut={() => {
-        document.body.style.cursor = 'grab';
+        document.body.style.cursor = "grab";
       }}
     >
       <boxGeometry args={[0.5, 0.5, 0.5]} />
-      <meshPhysicalMaterial 
-        color={color} 
-        roughness={0.4} 
-        metalness={0.5} 
-        clearcoat={0.5}
-        clearcoatRoughness={0.2}
+      <meshPhysicalMaterial
+        color={color}
+        roughness={0.15}
+        metalness={0.7}
+        clearcoat={1}
+        clearcoatRoughness={0.1}
+        iridescence={1}
+        iridescenceIOR={1.5}
+        iridescenceThicknessRange={[100, 400]}
       />
     </mesh>
   );
@@ -74,23 +104,31 @@ const VoxelGroup: React.FC = () => {
 
   // Voxel Logic
   const voxels = useMemo(() => {
-    const coords: { x: number; y: number; z: number }[] = [];
+    const coords: { x: number; y: number; z: number; color: string }[] = [];
     const offsetX = -1.25;
     const offsetY = 1.5;
+
+    const c1 = new THREE.Color(theme === "light" ? "#6b21a8" : "#2e1065");
+    const c2 = new THREE.Color(theme === "light" ? "#d946ef" : "#e879f9");
 
     MATRIX.forEach((row, y) => {
       row.forEach((val, x) => {
         if (val === 1) {
+          const yPos = -(y * 0.55) + offsetY;
+          const t = Math.max(0, Math.min(1, (yPos + 1.25) / 2.75));
+          const color = c1.clone().lerp(c2, t).getStyle();
+
           coords.push({
             x: x * 0.55 + offsetX,
-            y: -(y * 0.55) + offsetY,
+            y: yPos,
             z: 0,
+            color,
           });
         }
       });
     });
     return coords;
-  }, []);
+  }, [theme]);
 
   // Floating debris logic
   // Using generic type for debris items
@@ -120,7 +158,7 @@ const VoxelGroup: React.FC = () => {
       const time = clock.getElapsedTime();
 
       // Floating animation
-      groupRef.current.position.y = Math.sin(time * 0.5) * 0.2;
+      groupRef.current.position.y = Math.sin(time * 0.3) * 0.05;
 
       // Mouse interaction
       const { x, y } = mouseRef.current;
@@ -132,22 +170,43 @@ const VoxelGroup: React.FC = () => {
     }
   });
 
-  const color = theme === "light" ? "#6366f1" : "#818cf8";
+  const [groupX, setGroupX] = useState(0);
+
+  useEffect(() => {
+    const updatePosition = () => {
+      // Move the group to the right on desktop, keep centered on mobile
+      setGroupX(window.innerWidth >= 768 ? 4 : 0);
+    };
+    updatePosition();
+    window.addEventListener("resize", updatePosition);
+    return () => window.removeEventListener("resize", updatePosition);
+  }, []);
 
   return (
-    <group ref={groupRef}>
+    <group ref={groupRef} position={[groupX, 0, 0]}>
       {voxels.map((pos, i) => (
-        <InteractiveVoxel key={`voxel-${i}`} position={[pos.x, pos.y, pos.z]} color={color} />
-      ))}
-
-      {debris.map((d, i) => (
-        <Debris
-          key={`debris-${i}`}
-          initialPos={d.position}
-          yOffset={d.yOffset}
-          color={color}
+        <InteractiveVoxel
+          key={`voxel-${i}`}
+          position={[pos.x, pos.y, pos.z]}
+          color={pos.color}
         />
       ))}
+
+      {debris.map((d, i) => {
+        const t = Math.max(0, Math.min(1, (d.position[1] + 3) / 6));
+        const c1 = new THREE.Color(theme === "light" ? "#6b21a8" : "#2e1065");
+        const c2 = new THREE.Color(theme === "light" ? "#d946ef" : "#e879f9");
+        const dColor = c1.lerp(c2, t).getStyle();
+
+        return (
+          <Debris
+            key={`debris-${i}`}
+            initialPos={d.position}
+            yOffset={d.yOffset}
+            color={dColor}
+          />
+        );
+      })}
     </group>
   );
 };
@@ -164,20 +223,20 @@ const Debris: React.FC<{
     if (meshRef.current) {
       const time = clock.getElapsedTime();
       meshRef.current.position.y =
-        initialPos[1] + Math.sin(time + yOffset) * 0.2;
-        
+        initialPos[1] + Math.sin(time + yOffset) * 0.05;
+
       if (isAccelerated) {
-         meshRef.current.rotation.x += 10 * delta;
-         meshRef.current.rotation.y += 10 * delta;
+        meshRef.current.rotation.x += 10 * delta;
+        meshRef.current.rotation.y += 10 * delta;
       } else {
-         meshRef.current.rotation.x += 0.02;
+        meshRef.current.rotation.x += 0.02;
       }
     }
   });
 
   return (
-    <mesh 
-      ref={meshRef} 
+    <mesh
+      ref={meshRef}
       position={initialPos}
       onClick={(e) => {
         e.stopPropagation();
@@ -186,19 +245,21 @@ const Debris: React.FC<{
       }}
       onPointerOver={(e) => {
         e.stopPropagation();
-        document.body.style.cursor = 'pointer';
+        document.body.style.cursor = "pointer";
       }}
       onPointerOut={() => {
-        document.body.style.cursor = 'grab';
+        document.body.style.cursor = "grab";
       }}
     >
       <octahedronGeometry args={[0.2, 0]} />
-      <meshPhysicalMaterial 
-        color={color} 
-        roughness={0.3} 
-        metalness={0.6} 
+      <meshPhysicalMaterial
+        color={color}
+        roughness={0.1}
+        metalness={0.8}
         emissive={color}
-        emissiveIntensity={0.8}
+        emissiveIntensity={2.0}
+        iridescence={1}
+        iridescenceIOR={1.5}
       />
     </mesh>
   );
@@ -260,6 +321,17 @@ const Scene: React.FC = () => {
     return <FallbackDisplay message="[GRAPHICS_MODULE_OFFLINE]" />;
   }
 
+  const [sceneX, setSceneX] = useState(0);
+
+  useEffect(() => {
+    const updatePosition = () => {
+      setSceneX(window.innerWidth >= 768 ? 4 : 0);
+    };
+    updatePosition();
+    window.addEventListener("resize", updatePosition);
+    return () => window.removeEventListener("resize", updatePosition);
+  }, []);
+
   return (
     <WebGLErrorBoundary
       fallback={<FallbackDisplay message="[RENDER_SYS_FAILURE]" />}
@@ -276,9 +348,9 @@ const Scene: React.FC = () => {
           color="#ec4899"
           distance={20}
         />
-        
+
         <Environment preset="city" />
-        
+
         <PresentationControls
           global
           rotation={[0, 0, 0]}
@@ -286,27 +358,39 @@ const Scene: React.FC = () => {
           azimuth={[-Math.PI / 1.4, Math.PI / 2]}
         >
           <Float
-            speed={2} 
-            rotationIntensity={1.5} 
-            floatIntensity={2}
-            floatingRange={[-0.2, 0.2]}
+            speed={1}
+            rotationIntensity={0.5}
+            floatIntensity={0.5}
+            floatingRange={[-0.05, 0.05]}
           >
             <VoxelGroup />
           </Float>
         </PresentationControls>
 
         <ContactShadows
-          position={[0, -3.5, 0]}
+          position={[sceneX, -3.5, 0]}
           opacity={0.4}
           scale={20}
           blur={2}
           far={4.5}
         />
-        
-        <Stars radius={50} depth={50} count={1000} factor={4} saturation={0} fade speed={1} />
-        
+
+        <Stars
+          radius={50}
+          depth={50}
+          count={1000}
+          factor={4}
+          saturation={0}
+          fade
+          speed={1}
+        />
+
         <EffectComposer>
-          <Bloom luminanceThreshold={0.5} luminanceSmoothing={0.9} intensity={0.4} />
+          <Bloom
+            luminanceThreshold={0.5}
+            luminanceSmoothing={0.9}
+            intensity={0.4}
+          />
           <ChromaticAberration offset={new THREE.Vector2(0.001, 0.001)} />
         </EffectComposer>
       </Canvas>
