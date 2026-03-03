@@ -23,8 +23,8 @@ const Hero: React.FC = () => {
             </h1>
             
             <p className="mb-8 text-lg text-text-muted max-w-lg mx-auto md:mx-0">
-              Front End Developer, Team Lead, and Educator combining robust backend logic with immersive front-end interfaces.
-              Specializing in creative coding, generative art, and interactive web applications.
+              Front End Developer, Engineering Leader, and Software Engineering Educator combining robust backend logic with immersive front-end interfaces.
+              Passionate about technical leadership, teaching full-stack software engineering (JavaScript, React, Node.js), and crafting creative web experiences with advanced CSS and JS animations.
               Expert in <strong>React, Express, TypeScript, Node.js, Git, and DevOps</strong>.
             </p>
             

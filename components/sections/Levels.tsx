@@ -161,11 +161,11 @@ const Levels: React.FC = () => {
             onHover={() => playSound("hover")}
           />
           <ProjectCard
-            title="Interactive Experiments"
-            desc="A featured CodePen demonstration exploring advanced frontend techniques, animation loops, and interactive UI concepts."
-            tech={["CodePen", "CSS3", "Animation"]}
-            link="https://codepen.io/jimbennett/full/Odyapv"
-            image="/assets/portfolio/interactive-experiments.jpg"
+            title="CodePen Challenges & Experiments"
+            desc="A collection of creative coding challenges, mostly focused on advanced CSS/SCSS with some JavaScript. Some of these have been featured as CodePen challenges."
+            tech={["CSS", "SCSS", "JavaScript"]}
+            link="https://codepen.io/jimbennett"
+            image="/assets/portfolio/codepen.jpg"
             onHover={() => playSound("hover")}
           />
         </div>
