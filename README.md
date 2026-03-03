@@ -1,20 +1,39 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Jim Bennett - Developer Portfolio
 
-# Run and deploy your AI Studio app
+A responsive and interactive personal developer portfolio for Jim Bennett, built with modern web technologies to showcase work experience, skills, and projects.
 
-This contains everything you need to run your app locally.
+## Technologies Used
 
-View your app in AI Studio: https://ai.studio/apps/drive/1sShDWS5REOM6mK8SrzBjMPRE0DPr--Rx
+- **React** (v19) - UI Library
+- **Vite** - Fast frontend building tool
+- **Tailwind CSS** (v4) - Utility-first styling
+- **Three.js / React Three Fiber** - 3D rendering and interactive elements
+- **Vitest & React Testing Library** - Unit testing
 
-## Run Locally
+## Getting Started
 
-**Prerequisites:**  Node.js
+### Prerequisites
 
+- Node.js (v22 or higher recommended)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Installation
+
+1.  Clone the repository and install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+2.  Start the development server:
+    ```bash
+    npm run dev
+    ```
+    The application will be available at `http://localhost:5173`.
+
+### Available Scripts
+
+- `npm run dev`: Starts the development server.
+- `npm run build`: Compiles the application for production.
+- `npm run lint`: Runs ESLint to check for code issues.
+- `npm run test`: Runs the Vitest test suite.
+- `npm run preview`: Previews the production build locally.
