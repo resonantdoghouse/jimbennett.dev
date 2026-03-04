@@ -113,7 +113,7 @@ const Levels: React.FC = () => {
             <ProjectCard
               key={project.id}
               project={project}
-              onHover={() => playSound("hover")}
+              onHover={() => playSound("synth")}
             />
           ))}
         </div>

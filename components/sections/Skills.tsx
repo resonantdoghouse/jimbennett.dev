@@ -31,7 +31,7 @@ const Skills: React.FC = () => {
             <div
               key={skill}
               className="px-6 py-3 bg-card border border-border rounded shadow-sm hover:border-accent hover:text-accent hover:-translate-y-1 transition-all duration-200 cursor-default"
-              onMouseEnter={() => playSound("hover")}
+              onMouseEnter={() => playSound("typing")}
             >
               <span className="font-mono font-bold">{skill}</span>
             </div>

@@ -1,6 +1,18 @@
 export type Theme = "light" | "dark";
 
-export type SoundType = "hover" | "click" | "start" | "blip" | "coin";
+export type SoundType =
+  | "hover"
+  | "click"
+  | "start"
+  | "blip"
+  | "coin"
+  | "powerup"
+  | "error"
+  | "success"
+  | "jump"
+  | "typing"
+  | "synth"
+  | "select";
 
 export interface SoundContextType {
   isEnabled: boolean;

@@ -38,7 +38,7 @@ const Header: React.FC = () => {
 
   const handleNavClick = (e: React.MouseEvent<HTMLElement>, href: string) => {
     e.preventDefault();
-    playSound("click");
+    playSound("select");
     setIsMobileMenuOpen(false);
 
     if (location.pathname === "/") {
@@ -73,7 +73,7 @@ const Header: React.FC = () => {
               else window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             className="font-pixel text-sm md:text-base text-accent drop-shadow-[2px_2px_0_var(--accent-secondary)]"
-            onMouseEnter={() => playSound("coin")}
+            onMouseEnter={() => playSound("powerup")}
           >
             JIM_BENNETT_DEV
           </a>
@@ -138,7 +138,11 @@ const Header: React.FC = () => {
 
             <Button
               variant="icon"
-              onClick={toggleTheme}
+              onClick={() => {
+                const newTheme = theme === "dark" ? "light" : "dark";
+                toggleTheme();
+                playSound(newTheme === "light" ? "powerup" : "synth");
+              }}
               aria-label={
                 theme === "dark"
                   ? "Switch to Light Mode"
