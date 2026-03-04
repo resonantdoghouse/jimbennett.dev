@@ -65,7 +65,7 @@ const Reviews: React.FC = () => {
         <div className="flex items-center gap-4 mb-8">
           <div className="w-12 h-1 bg-accent pixel-clip"></div>
           <h2 className="font-pixel text-2xl md:text-3xl text-accent">
-            Student Reviews
+            Reputation
           </h2>
           <div className="flex-1 h-px bg-border"></div>
         </div>
@@ -106,7 +106,7 @@ const Reviews: React.FC = () => {
             <button
               onClick={handlePrev}
               className="h-10 w-10 border border-accent bg-transparent text-accent flex items-center justify-center hover:bg-accent hover:text-background transition-colors font-pixel focus:outline-none"
-              aria-label="Previous reviews"
+              aria-label="Previous testimonials"
             >
               {"<"}
             </button>
@@ -130,7 +130,7 @@ const Reviews: React.FC = () => {
             <button
               onClick={handleNext}
               className="h-10 w-10 border border-accent bg-transparent text-accent flex items-center justify-center hover:bg-accent hover:text-background transition-colors font-pixel focus:outline-none"
-              aria-label="Next reviews"
+              aria-label="Next testimonials"
             >
               {">"}
             </button>

@@ -110,7 +110,7 @@ const Header: React.FC = () => {
                   handleNavClick(e, "#reviews")
                 }
               >
-                Reviews
+                Reputation (Reviews)
               </NavLink>
             </li>
             <li>
@@ -121,7 +121,7 @@ const Header: React.FC = () => {
                   handleNavClick(e, "#contact")
                 }
               >
-                Contact
+                Co-op (Contact)
               </NavLink>
             </li>
           </ul>
@@ -189,7 +189,7 @@ const Header: React.FC = () => {
               handleNavClick(e, "#reviews")
             }
           >
-            Reviews
+            Reputation
           </NavLink>
           <NavLink
             href="#contact"
@@ -198,7 +198,7 @@ const Header: React.FC = () => {
               handleNavClick(e, "#contact")
             }
           >
-            Contact
+            Co-op
           </NavLink>
         </div>
       )}
