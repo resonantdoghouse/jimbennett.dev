@@ -5,11 +5,13 @@ import React, {
   useRef,
   useCallback,
 } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { reviews, Review } from "../../data/reviews";
 import { useSound } from "../../hooks/useSound";
 
 const Reviews: React.FC = () => {
   const { playSound } = useSound();
+  const shouldReduceMotion = useReducedMotion();
   const [shuffledReviews] = useState<Review[]>(() =>
     [...reviews].sort(() => 0.5 - Math.random()),
   );
@@ -77,10 +79,20 @@ const Reviews: React.FC = () => {
       <div className="relative z-10 max-w-[1100px] mx-auto px-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
           {currentReviews.map((review, index) => (
-            <div
+            <motion.div
               key={`${review.id}-${index}`}
               className="bg-card border border-border p-6 rounded relative transition-transform hover:-translate-y-2 hover:border-accent hover:shadow-[0_0_15px_rgba(99,102,241,0.2)] cursor-default flex flex-col justify-between h-full"
               onMouseEnter={() => playSound("hover")}
+              initial={
+                shouldReduceMotion
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 20 }
+              }
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: shouldReduceMotion ? 0 : 0.4,
+                delay: shouldReduceMotion ? 0 : index * 0.1,
+              }}
             >
               <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-accent opacity-0 hover:opacity-100 transition-opacity"></div>
               <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-accent opacity-0 hover:opacity-100 transition-opacity"></div>
@@ -97,7 +109,7 @@ const Reviews: React.FC = () => {
                 </span>
                 <div className="w-8 h-1 bg-accent-secondary opacity-50 pixel-clip"></div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

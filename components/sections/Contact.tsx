@@ -1,13 +1,26 @@
 import React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import Button from "../ui/Button";
 
 const Contact: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
       id="contact"
       className="py-24 text-center pb-32 bg-card border-t border-border"
     >
-      <div className="max-w-[800px] mx-auto px-5">
+      <motion.div
+        className="max-w-[800px] mx-auto px-5"
+        initial={
+          shouldReduceMotion
+            ? { opacity: 1, scale: 1 }
+            : { opacity: 0, scale: 0.95 }
+        }
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
+      >
         <span className="font-mono text-accent text-sm mb-4 block">
           AVAILABLE FOR CO-OP
         </span>
@@ -31,7 +44,7 @@ const Contact: React.FC = () => {
             LINKEDIN
           </Button>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

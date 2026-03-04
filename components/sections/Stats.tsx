@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useSound } from "../../hooks/useSound";
 
 interface StatItemProps {
@@ -9,23 +9,34 @@ interface StatItemProps {
   onHover: () => void;
 }
 
-const StatItem: React.FC<StatItemProps> = ({ num, label, delay, onHover }) => (
-  <motion.div
-    className="text-center group hover-trigger"
-    onMouseEnter={onHover}
-    initial={{ opacity: 0, scale: 0.8 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true, margin: "-50px" }}
-    transition={{ duration: 0.4, delay }}
-  >
-    <span className="font-pixel text-xl md:text-2xl text-accent mb-2 block group-hover:scale-110 transition-transform">
-      {num}
-    </span>
-    <span className="text-sm md:text-base font-mono text-text-muted uppercase tracking-wider">
-      {label}
-    </span>
-  </motion.div>
-);
+const StatItem: React.FC<StatItemProps> = ({ num, label, delay, onHover }) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      className="text-center group hover-trigger"
+      onMouseEnter={onHover}
+      initial={
+        shouldReduceMotion
+          ? { opacity: 1, scale: 1 }
+          : { opacity: 0, scale: 0.8 }
+      }
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{
+        duration: shouldReduceMotion ? 0 : 0.4,
+        delay: shouldReduceMotion ? 0 : delay,
+      }}
+    >
+      <span className="font-pixel text-xl md:text-2xl text-accent mb-2 block group-hover:scale-110 transition-transform">
+        {num}
+      </span>
+      <span className="text-sm md:text-base font-mono text-text-muted uppercase tracking-wider">
+        {label}
+      </span>
+    </motion.div>
+  );
+};
 
 const Stats: React.FC = () => {
   const { playSound } = useSound();

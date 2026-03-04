@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useSound } from "../../hooks/useSound";
 
 interface QuestItemProps {
@@ -20,32 +20,41 @@ const QuestItem: React.FC<QuestItemProps> = ({
   desc,
   index,
   onHover,
-}) => (
-  <motion.div
-    className="bg-card border border-border p-6 flex gap-5 relative overflow-hidden transition-all duration-300 hover:border-accent-secondary hover:translate-x-2 group"
-    onMouseEnter={onHover}
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-100px" }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-  >
-    {/* Sidebar Accent */}
-    <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-accent" />
+}) => {
+  const shouldReduceMotion = useReducedMotion();
 
-    <div className="text-3xl min-w-[60px] flex items-center justify-center bg-accent/10 text-accent rounded-lg h-16 self-center">
-      {icon}
-    </div>
+  return (
+    <motion.div
+      className="bg-card border border-border p-6 flex gap-5 relative overflow-hidden transition-all duration-300 hover:border-accent-secondary hover:translate-x-2 group"
+      onMouseEnter={onHover}
+      initial={
+        shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+      }
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{
+        duration: shouldReduceMotion ? 0 : 0.5,
+        delay: shouldReduceMotion ? 0 : index * 0.1,
+      }}
+    >
+      {/* Sidebar Accent */}
+      <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-accent" />
 
-    <div>
-      <h3 className="font-bold text-xl mb-1">{title}</h3>
-      <h4 className="text-accent font-bold mb-2">{company}</h4>
-      <span className="font-mono text-xs bg-background px-2 py-1 border border-border inline-block mb-3">
-        {date}
-      </span>
-      <p className="text-text-muted">{desc}</p>
-    </div>
-  </motion.div>
-);
+      <div className="text-3xl min-w-[60px] flex items-center justify-center bg-accent/10 text-accent rounded-lg h-16 self-center">
+        {icon}
+      </div>
+
+      <div>
+        <h3 className="font-bold text-xl mb-1">{title}</h3>
+        <h4 className="text-accent font-bold mb-2">{company}</h4>
+        <span className="font-mono text-xs bg-background px-2 py-1 border border-border inline-block mb-3">
+          {date}
+        </span>
+        <p className="text-text-muted">{desc}</p>
+      </div>
+    </motion.div>
+  );
+};
 
 const Quests: React.FC = () => {
   const { playSound } = useSound();

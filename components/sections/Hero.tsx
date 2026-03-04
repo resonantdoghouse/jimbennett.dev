@@ -1,9 +1,11 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Scene from "../3d/VoxelAvatar";
 import Button from "../ui/Button";
 
 const Hero: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
       id="hero"
@@ -26,12 +28,19 @@ const Hero: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-center md:text-left">
           <motion.div
             className="hero-text-content pointer-events-auto"
-            initial={{ opacity: 0, y: 30 }}
+            initial={
+              shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+            }
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{
+              duration: shouldReduceMotion ? 0 : 0.8,
+              delay: shouldReduceMotion ? 0 : 0.2,
+            }}
           >
             {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 border border-green-500/50 bg-green-500/10 px-4 py-2 rounded-full mb-6 animate-pulse">
+            <div
+              className={`inline-flex items-center gap-2 border border-green-500/50 bg-green-500/10 px-4 py-2 rounded-full mb-6 ${shouldReduceMotion ? "" : "animate-pulse"}`}
+            >
               <span className="w-2 h-2 rounded-full bg-green-500"></span>
               <span className="font-mono text-xs text-green-400 font-bold tracking-wide uppercase">
                 Open to Work
@@ -58,9 +67,12 @@ const Hero: React.FC = () => {
 
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-              initial={{ opacity: 0 }}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.8 }}
+              transition={{
+                duration: shouldReduceMotion ? 0 : 1,
+                delay: shouldReduceMotion ? 0 : 0.8,
+              }}
             >
               <Button href="#contact" as="a" soundType="coin">
                 HIRE ME

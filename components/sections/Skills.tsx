@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useSound } from "../../hooks/useSound";
 
 const skillList = [
@@ -24,6 +24,7 @@ const skillList = [
 
 const Skills: React.FC = () => {
   const { playSound } = useSound();
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section
@@ -33,10 +34,12 @@ const Skills: React.FC = () => {
       <div className="max-w-[1100px] mx-auto px-5">
         <motion.h2
           className="text-2xl font-bold mb-8 font-mono text-center md:text-left flex items-center gap-3"
-          initial={{ opacity: 0, x: -20 }}
+          initial={
+            shouldReduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
+          }
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.5 }}
         >
           <span className="text-accent">{">>"}</span> TECH_STACK_INIT
         </motion.h2>
@@ -49,7 +52,7 @@ const Skills: React.FC = () => {
           variants={{
             visible: {
               transition: {
-                staggerChildren: 0.05,
+                staggerChildren: shouldReduceMotion ? 0 : 0.05,
               },
             },
           }}
@@ -58,7 +61,10 @@ const Skills: React.FC = () => {
             <motion.div
               key={skill}
               variants={{
-                hidden: { opacity: 0, scale: 0.8 },
+                hidden: {
+                  opacity: shouldReduceMotion ? 1 : 0,
+                  scale: shouldReduceMotion ? 1 : 0.8,
+                },
                 visible: { opacity: 1, scale: 1 },
               }}
               className="px-6 py-3 bg-card border border-border rounded shadow-sm hover:border-accent hover:text-accent hover:-translate-y-1 transition-all duration-200 cursor-default"

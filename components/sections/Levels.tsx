@@ -1,86 +1,107 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
 import { useSound } from "../../hooks/useSound";
 import { projects } from "../../data/projects";
 import { Project } from "../../types";
 
 interface ProjectCardProps {
   project: Project;
+  index: number;
   onHover: () => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onHover }) => (
-  <article
-    className="bg-card border border-border group transition-all duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0_var(--text-muted)] flex flex-col h-full"
-    onMouseEnter={onHover}
-  >
-    <Link to={`/projects/${project.slug}`} className="block group">
-      <div className="h-48 bg-[#2a2a2a] relative flex items-center justify-center overflow-hidden shrink-0 border-b border-border group-hover:border-accent transition-colors">
-        {project.images && project.images.length > 0 ? (
-          <img
-            src={project.images[0]}
-            alt={`Screenshot of ${project.title}`}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        ) : (
-          <div
-            className="w-20 h-14 bg-accent shadow-[4px_4px_0_var(--accent-secondary)]"
-            style={{
-              background: project.color ? `var(--${project.color})` : undefined,
-            }}
-          />
-        )}
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  project,
+  index,
+  onHover,
+}) => {
+  const shouldReduceMotion = useReducedMotion();
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+  return (
+    <motion.article
+      className="bg-card border border-border group transition-all duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0_var(--text-muted)] flex flex-col h-full"
+      onMouseEnter={onHover}
+      initial={
+        shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+      }
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{
+        duration: shouldReduceMotion ? 0 : 0.5,
+        delay: shouldReduceMotion ? 0 : index * 0.1,
+      }}
+    >
+      <Link to={`/projects/${project.slug}`} className="block group">
+        <div className="h-48 bg-[#2a2a2a] relative flex items-center justify-center overflow-hidden shrink-0 border-b border-border group-hover:border-accent transition-colors">
+          {project.images && project.images.length > 0 ? (
+            <img
+              src={project.images[0]}
+              alt={`Screenshot of ${project.title}`}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div
+              className="w-20 h-14 bg-accent shadow-[4px_4px_0_var(--accent-secondary)]"
+              style={{
+                background: project.color
+                  ? `var(--${project.color})`
+                  : undefined,
+              }}
+            />
+          )}
 
-        {/* Scanline effect on image */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_2px,3px_100%] pointer-events-none opacity-30"></div>
-      </div>
-    </Link>
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
 
-    <div className="p-6 flex flex-col grow">
-      <Link to={`/projects/${project.slug}`} className="block w-fit">
-        <h3 className="font-bold text-xl mb-3 group-hover:text-accent transition-colors">
-          {project.title}
-        </h3>
+          {/* Scanline effect on image */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_2px,3px_100%] pointer-events-none opacity-30"></div>
+        </div>
       </Link>
-      <p className="text-text-muted mb-6 text-sm leading-relaxed grow">
-        {project.description}
-      </p>
 
-      <div className="mb-6 flex flex-wrap gap-2">
-        {project.tech.map((t) => (
-          <span
-            key={t}
-            className="font-mono text-[10px] uppercase tracking-wider bg-background px-2 py-1 border border-border text-text-muted"
-          >
-            {t}
-          </span>
-        ))}
-      </div>
-
-      <div className="flex items-center gap-4 mt-auto">
-        <Link
-          to={`/projects/${project.slug}`}
-          className="font-bold font-mono text-sm text-accent hover:text-accent-secondary hover:underline inline-flex items-center gap-2"
-        >
-          <span>CASE STUDY</span>
-          <span>{">"}</span>
+      <div className="p-6 flex flex-col grow">
+        <Link to={`/projects/${project.slug}`} className="block w-fit">
+          <h3 className="font-bold text-xl mb-3 group-hover:text-accent transition-colors">
+            {project.title}
+          </h3>
         </Link>
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-bold font-mono text-sm text-text-muted hover:text-text-main hover:underline inline-flex items-center gap-2 ml-auto"
-        >
-          <span>VISIT</span>
-          <span>↗</span>
-        </a>
+        <p className="text-text-muted mb-6 text-sm leading-relaxed grow">
+          {project.description}
+        </p>
+
+        <div className="mb-6 flex flex-wrap gap-2">
+          {project.tech.map((t) => (
+            <span
+              key={t}
+              className="font-mono text-[10px] uppercase tracking-wider bg-background px-2 py-1 border border-border text-text-muted"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-4 mt-auto">
+          <Link
+            to={`/projects/${project.slug}`}
+            className="font-bold font-mono text-sm text-accent hover:text-accent-secondary hover:underline inline-flex items-center gap-2"
+          >
+            <span>CASE STUDY</span>
+            <span>{">"}</span>
+          </Link>
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold font-mono text-sm text-text-muted hover:text-text-main hover:underline inline-flex items-center gap-2 ml-auto"
+          >
+            <span>VISIT</span>
+            <span>↗</span>
+          </a>
+        </div>
       </div>
-    </div>
-  </article>
-);
+    </motion.article>
+  );
+};
 
 const Levels: React.FC = () => {
   const { playSound } = useSound();
@@ -109,10 +130,11 @@ const Levels: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}
+              index={index}
               onHover={() => playSound("synth")}
             />
           ))}
