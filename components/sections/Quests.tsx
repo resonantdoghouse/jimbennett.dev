@@ -74,7 +74,7 @@ const Quests: React.FC = () => {
             date="Jan 2020 - Present"
             desc="Overseeing rigorous bootcamps covering front-end and back-end development. Mentoring students in JavaScript, React, Node.js, and Express."
             index={0}
-            onHover={() => playSound("jump")}
+            onHover={() => playSound("hover")}
           />
           <QuestItem
             icon="🚀"
@@ -83,7 +83,7 @@ const Quests: React.FC = () => {
             date="Jun 2017 - Jan 2020"
             desc="Designed and taught comprehensive curriculums for WordPress and full-stack development. Mentored students to create professional-grade applications at RED Academy."
             index={1}
-            onHover={() => playSound("jump")}
+            onHover={() => playSound("hover")}
           />
           <QuestItem
             icon="🛠️"
@@ -92,7 +92,7 @@ const Quests: React.FC = () => {
             date="2016 - 2018"
             desc="Delivered custom WordPress solutions and mobile apps for diverse clients. Managed projects from concept to deployment, ensuring high-quality functional designs."
             index={2}
-            onHover={() => playSound("jump")}
+            onHover={() => playSound("hover")}
           />
           <QuestItem
             icon="🎨"
@@ -101,7 +101,7 @@ const Quests: React.FC = () => {
             date="Jan 2014 - Nov 2016"
             desc="Designed mockups and built custom Drupal themes. Created visually stunning, user-friendly websites with high-volume production capabilities."
             index={3}
-            onHover={() => playSound("jump")}
+            onHover={() => playSound("hover")}
           />
           <QuestItem
             icon="💻"
@@ -110,7 +110,7 @@ const Quests: React.FC = () => {
             date="2009 - 2013"
             desc="Developed and maintained a diverse portfolio of company and client websites utilizing the Drupal CMS framework. Prototyped and built interactive touch-screen applications using Adobe Flex to create specialized user experiences for kiosk hardware."
             index={4}
-            onHover={() => playSound("jump")}
+            onHover={() => playSound("hover")}
           />
           <QuestItem
             icon="📈"
@@ -119,7 +119,7 @@ const Quests: React.FC = () => {
             date="2006 - 2009"
             desc="Worked on websites for Whistler Olympic Accommodations and Financial Advisors using Joomla, JavaScript, and jQuery. Developed the Hardcore Championship Fighting project, creating interactive Flash fighter cards, the main website, fighter cutouts, TV/web graphics, and composed the project's music."
             index={5}
-            onHover={() => playSound("jump")}
+            onHover={() => playSound("hover")}
           />
         </div>
       </div>
