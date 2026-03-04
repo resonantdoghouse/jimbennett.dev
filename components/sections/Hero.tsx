@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Scene from "../3d/VoxelAvatar";
 import Button from "../ui/Button";
 
@@ -23,7 +24,12 @@ const Hero: React.FC = () => {
 
       <div className="max-w-[1100px] mx-auto px-5 w-full relative z-10 pointer-events-none">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-center md:text-left">
-          <div className="hero-text-content pointer-events-auto">
+          <motion.div
+            className="hero-text-content pointer-events-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             {/* Status Badge */}
             <div className="inline-flex items-center gap-2 border border-green-500/50 bg-green-500/10 px-4 py-2 rounded-full mb-6 animate-pulse">
               <span className="w-2 h-2 rounded-full bg-green-500"></span>
@@ -50,7 +56,12 @@ const Hero: React.FC = () => {
               .
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+            >
               <Button href="#contact" as="a" soundType="coin">
                 HIRE ME
               </Button>
@@ -62,8 +73,8 @@ const Hero: React.FC = () => {
               >
                 VIEW PORTFOLIO
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Empty column for layout spacing to keep text on the left */}
           <div className="hidden md:block pointer-events-none"></div>
