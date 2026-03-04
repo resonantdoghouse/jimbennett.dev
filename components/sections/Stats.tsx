@@ -24,7 +24,7 @@ const Stats: React.FC = () => {
   return (
     <div className="bg-card border-t-4 border-b-4 border-accent py-10 -mt-12 relative z-20 shadow-lg">
       <div className="max-w-[1100px] mx-auto px-5">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-border">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 divide-y md:divide-y-0 md:divide-x divide-border">
           <StatItem
             num="17+"
             label="Years Experience"
@@ -40,9 +40,14 @@ const Stats: React.FC = () => {
             label="React • Node • SQL"
             onHover={() => playSound("blip")}
           />
-           <StatItem
+          <StatItem
             num="DevOps"
             label="Cloud Deployments"
+            onHover={() => playSound("blip")}
+          />
+          <StatItem
+            num="1,000+"
+            label="Students Taught"
             onHover={() => playSound("blip")}
           />
         </div>

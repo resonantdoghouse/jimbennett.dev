@@ -84,7 +84,9 @@ const Header: React.FC = () => {
               <NavLink
                 href="#quests"
                 onHover={handleHover}
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "#quests")}
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+                  handleNavClick(e, "#quests")
+                }
               >
                 Quests (Work)
               </NavLink>
@@ -93,16 +95,31 @@ const Header: React.FC = () => {
               <NavLink
                 href="#levels"
                 onHover={handleHover}
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "#levels")}
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+                  handleNavClick(e, "#levels")
+                }
               >
                 Levels (Projects)
               </NavLink>
             </li>
             <li>
               <NavLink
+                href="#reviews"
+                onHover={handleHover}
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+                  handleNavClick(e, "#reviews")
+                }
+              >
+                Reviews
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 href="#contact"
                 onHover={handleHover}
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "#contact")}
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+                  handleNavClick(e, "#contact")
+                }
               >
                 Contact
               </NavLink>
@@ -150,21 +167,36 @@ const Header: React.FC = () => {
           <NavLink
             href="#quests"
             onHover={handleHover}
-            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "#quests")}
+            onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+              handleNavClick(e, "#quests")
+            }
           >
             Quests
           </NavLink>
           <NavLink
             href="#levels"
             onHover={handleHover}
-            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "#levels")}
+            onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+              handleNavClick(e, "#levels")
+            }
           >
             Levels
           </NavLink>
           <NavLink
+            href="#reviews"
+            onHover={handleHover}
+            onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+              handleNavClick(e, "#reviews")
+            }
+          >
+            Reviews
+          </NavLink>
+          <NavLink
             href="#contact"
             onHover={handleHover}
-            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "#contact")}
+            onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+              handleNavClick(e, "#contact")
+            }
           >
             Contact
           </NavLink>

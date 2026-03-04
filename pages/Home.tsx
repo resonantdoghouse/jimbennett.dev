@@ -5,6 +5,7 @@ import Hero from "../components/sections/Hero";
 const Stats = lazy(() => import("../components/sections/Stats"));
 const Skills = lazy(() => import("../components/sections/Skills"));
 const Quests = lazy(() => import("../components/sections/Quests"));
+const Reviews = lazy(() => import("../components/sections/Reviews"));
 const Levels = lazy(() => import("../components/sections/Levels"));
 const Contact = lazy(() => import("../components/sections/Contact"));
 
@@ -38,6 +39,7 @@ const Home: React.FC = () => {
         <Skills />
         <Quests />
         <Levels />
+        <Reviews />
         <Contact />
       </Suspense>
     </>
