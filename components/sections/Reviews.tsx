@@ -44,7 +44,7 @@ const Reviews: React.FC = () => {
     if (!isHovered && totalPages > 1) {
       timerRef.current = window.setInterval(() => {
         handleNext();
-      }, 60000); // 1 minute
+      }, 30000); // Half a minute
     }
 
     return () => {
