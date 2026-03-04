@@ -12,7 +12,11 @@ export type SoundType =
   | "jump"
   | "typing"
   | "synth"
-  | "select";
+  | "select"
+  | "subtle_blip"
+  | "bell"
+  | "plop"
+  | "chime";
 
 export interface SoundContextType {
   isEnabled: boolean;

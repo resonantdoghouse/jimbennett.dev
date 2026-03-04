@@ -144,6 +144,53 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({
           osc.start(now);
           osc.stop(now + 0.1);
           break;
+        case "subtle_blip":
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(400, now);
+          osc.frequency.exponentialRampToValueAtTime(800, now + 0.05);
+          gainNode.gain.setValueAtTime(0.01, now);
+          gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+          osc.start(now);
+          osc.stop(now + 0.05);
+          break;
+        case "bell":
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(1000, now);
+          osc.frequency.exponentialRampToValueAtTime(900, now + 0.5);
+          gainNode.gain.setValueAtTime(0.05, now);
+          gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+          osc.start(now);
+          osc.stop(now + 0.5);
+          break;
+        case "plop":
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(300, now);
+          osc.frequency.exponentialRampToValueAtTime(150, now + 0.1);
+          gainNode.gain.setValueAtTime(0.08, now);
+          gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+          osc.start(now);
+          osc.stop(now + 0.1);
+          break;
+        case "chime":
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(1200, now);
+          osc.frequency.exponentialRampToValueAtTime(1500, now + 0.8);
+          // Simple modulation
+          const modOsc = ctx.createOscillator();
+          const modGain = ctx.createGain();
+          modOsc.type = "sine";
+          modOsc.frequency.value = 8;
+          modGain.gain.value = 50;
+          modOsc.connect(modGain);
+          modGain.connect(osc.frequency);
+          modOsc.start(now);
+          modOsc.stop(now + 0.8);
+
+          gainNode.gain.setValueAtTime(0.03, now);
+          gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+          osc.start(now);
+          osc.stop(now + 0.8);
+          break;
         case "select":
           osc.type = "triangle";
           osc.frequency.setValueAtTime(800, now);
