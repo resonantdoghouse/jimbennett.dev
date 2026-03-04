@@ -10,18 +10,14 @@ import { useSound } from "../../hooks/useSound";
 
 const Reviews: React.FC = () => {
   const { playSound } = useSound();
-  const [shuffledReviews, setShuffledReviews] = useState<Review[]>([]);
+  const [shuffledReviews] = useState<Review[]>(() =>
+    [...reviews].sort(() => 0.5 - Math.random()),
+  );
   const [currentPage, setCurrentPage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const timerRef = useRef<number | null>(null);
 
   const itemsPerPage = 3;
-
-  useEffect(() => {
-    // Randomize the initial list
-    const shuffled = [...reviews].sort(() => 0.5 - Math.random());
-    setShuffledReviews(shuffled);
-  }, []);
 
   const totalPages = Math.ceil(shuffledReviews.length / itemsPerPage);
 
