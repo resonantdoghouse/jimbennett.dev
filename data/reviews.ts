@@ -84,4 +84,24 @@ export const reviews: Review[] = [
     id: "rev-20",
     text: "Very organized, seems to have prepared what he is going to code during the lecture.",
   },
+  {
+    id: "rev-21",
+    text: "Jim is a great educator. He presents learning material in a clear and easy-to-understand way. My favourite thing about Jim is how many resources he has to share with us! Also, he is great at ensuring we understand the important concepts we need to know by following up lectures or learning studios with helpful tutorials.",
+  },
+  {
+    id: "rev-22",
+    text: "Jim also gives great resources - I enjoy the snippets of his videos. Super helpful and I appreciated that a lot.",
+  },
+  {
+    id: "rev-23",
+    text: "Jim has a very calm approach to teaching which helps make complex concepts easier to understand. While I've only seen his video on how to approach a lab, which I found really insightful, I look forward to learning more from his teaching style.",
+  },
+  {
+    id: "rev-24",
+    text: "Very knowledgeable and passionate about his craft, his creativity and skill shows through in his teaching, and makes it fun to work with him.",
+  },
+  {
+    id: "rev-25",
+    text: "He explains concepts clearly and at a pace that makes the material easy to follow and understand. His teaching style greatly enhances my learning experience, allowing me to grasp complex topics effectively",
+  },
 ];
