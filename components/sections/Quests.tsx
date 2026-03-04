@@ -53,7 +53,7 @@ const Quests: React.FC = () => {
         <div className="flex flex-col gap-6">
           <QuestItem
             icon="🎓"
-            title="Lead Educator & Team Lead"
+            title="Lead Educator & Team Lead, Software Engineering Bootcamp"
             company="BrainStation"
             date="Jan 2020 - Present"
             desc="Overseeing rigorous bootcamps covering front-end and back-end development. Mentoring students in JavaScript, React, Node.js, and Express."
