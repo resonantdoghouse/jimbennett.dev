@@ -56,4 +56,32 @@ export const reviews: Review[] = [
     id: "rev-13",
     text: "Jim Bennett is an excellent instructor. I love that he goes beyond the content in the slides. His knowledge and expertise are very apparent, and his teaching style is very easy to follow. He is also very considerate and gentle.",
   },
+  {
+    id: "rev-14",
+    text: "Jim is an all-around great educator. He is really good at explaining concepts and is very approachable.",
+  },
+  {
+    id: "rev-15",
+    text: "Jim is excellent at breaking down complex topics in a nice slow and digestible manner. It's a great experience every time Jim is teaching a topic.",
+  },
+  {
+    id: "rev-16",
+    text: "Easygoing, approachable manner. Explains concepts fairly well and is empathetic with student needs.",
+  },
+  {
+    id: "rev-17",
+    text: "Jim provides good examples to demonstrate complex/abstract concepts. He does a good job at repeating the important points of a given lecture.",
+  },
+  {
+    id: "rev-18",
+    text: "He goes at a pace that matches the content and is digestible and understandable - super helpful!",
+  },
+  {
+    id: "rev-19",
+    text: "He has a gift for teaching!",
+  },
+  {
+    id: "rev-20",
+    text: "Very organized, seems to have prepared what he is going to code during the lecture.",
+  },
 ];
