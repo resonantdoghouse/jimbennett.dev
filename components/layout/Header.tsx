@@ -79,8 +79,8 @@ const Header: React.FC = () => {
           </a>
 
           {/* Desktop Nav */}
-          <ul className="hidden md:flex gap-8 items-center list-none">
-            <li>
+          <ul className="hidden md:flex gap-4 lg:gap-8 items-center list-none ml-2 lg:ml-0 flex-1 justify-center">
+            <li className="text-xs lg:text-sm">
               <NavLink
                 href="#quests"
                 onHover={handleHover}
@@ -91,7 +91,7 @@ const Header: React.FC = () => {
                 Quests (Work)
               </NavLink>
             </li>
-            <li>
+            <li className="text-xs lg:text-sm">
               <NavLink
                 href="#levels"
                 onHover={handleHover}
@@ -102,7 +102,7 @@ const Header: React.FC = () => {
                 Levels (Projects)
               </NavLink>
             </li>
-            <li>
+            <li className="text-xs lg:text-sm">
               <NavLink
                 href="#reviews"
                 onHover={handleHover}
@@ -113,7 +113,7 @@ const Header: React.FC = () => {
                 Reputation (Reviews)
               </NavLink>
             </li>
-            <li>
+            <li className="text-xs lg:text-sm">
               <NavLink
                 href="#contact"
                 onHover={handleHover}
@@ -171,7 +171,7 @@ const Header: React.FC = () => {
               handleNavClick(e, "#quests")
             }
           >
-            Quests
+            Quests (Work)
           </NavLink>
           <NavLink
             href="#levels"
@@ -180,7 +180,7 @@ const Header: React.FC = () => {
               handleNavClick(e, "#levels")
             }
           >
-            Levels
+            Levels (Projects)
           </NavLink>
           <NavLink
             href="#reviews"
@@ -189,7 +189,7 @@ const Header: React.FC = () => {
               handleNavClick(e, "#reviews")
             }
           >
-            Reputation
+            Reputation (Reviews)
           </NavLink>
           <NavLink
             href="#contact"
@@ -198,7 +198,7 @@ const Header: React.FC = () => {
               handleNavClick(e, "#contact")
             }
           >
-            Co-op
+            Co-op (Contact)
           </NavLink>
         </div>
       )}
