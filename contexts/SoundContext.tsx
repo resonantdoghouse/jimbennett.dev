@@ -171,7 +171,7 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({
           osc.start(now);
           osc.stop(now + 0.1);
           break;
-        case "chime":
+        case "chime": {
           osc.type = "sine";
           osc.frequency.setValueAtTime(1200, now);
           osc.frequency.exponentialRampToValueAtTime(1500, now + 0.8);
@@ -191,6 +191,7 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({
           osc.start(now);
           osc.stop(now + 0.8);
           break;
+        }
         case "select":
           osc.type = "triangle";
           osc.frequency.setValueAtTime(800, now);
