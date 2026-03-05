@@ -35,9 +35,13 @@ const ParallaxStars: React.FC = () => {
     <div
       ref={ref}
       className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+      aria-hidden="true"
     >
       {/* Background layer (slowest) */}
-      <motion.div className="absolute inset-0" style={{ y: yBackground }}>
+      <motion.div
+        className="absolute inset-0"
+        style={{ y: yBackground, willChange: "transform" }}
+      >
         {stars.slice(0, 50).map((star) => (
           <div
             key={`bg-${star.id}`}
@@ -55,7 +59,10 @@ const ParallaxStars: React.FC = () => {
       </motion.div>
 
       {/* Midground layer (medium speed) */}
-      <motion.div className="absolute inset-0" style={{ y: yMidground }}>
+      <motion.div
+        className="absolute inset-0"
+        style={{ y: yMidground, willChange: "transform" }}
+      >
         {stars.slice(50, 110).map((star) => (
           <div
             key={`md-${star.id}`}
@@ -73,7 +80,10 @@ const ParallaxStars: React.FC = () => {
       </motion.div>
 
       {/* Foreground layer (fastest) */}
-      <motion.div className="absolute inset-0" style={{ y: yForeground }}>
+      <motion.div
+        className="absolute inset-0"
+        style={{ y: yForeground, willChange: "transform" }}
+      >
         {stars.slice(110, 150).map((star) => (
           <div
             key={`fg-${star.id}`}

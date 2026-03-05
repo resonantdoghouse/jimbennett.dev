@@ -20,6 +20,7 @@ const Hero: React.FC = () => {
         id="canvas-container"
         className="absolute inset-0 z-0"
         aria-label="Interactive 3D Avatar"
+        role="img"
       >
         <Scene />
       </div>

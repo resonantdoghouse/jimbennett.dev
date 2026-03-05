@@ -14,7 +14,6 @@ import {
 } from "@react-three/postprocessing";
 import { useTheme } from "../../hooks/useTheme";
 import * as THREE from "three";
-import { useMousePosition } from "../../hooks/useMousePosition";
 
 const MATRIX = [
   [0, 0, 1, 0, 0],
@@ -103,7 +102,6 @@ const InteractiveVoxel: React.FC<{
 const VoxelGroup: React.FC = () => {
   const groupRef = useRef<THREE.Group>(null);
   const { theme } = useTheme();
-  const mouseRef = useMousePosition();
 
   // Voxel Logic
   const voxels = useMemo(() => {
@@ -156,7 +154,7 @@ const VoxelGroup: React.FC = () => {
     setDebris(newDebris);
   }, []);
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock, pointer }) => {
     if (groupRef.current) {
       const time = clock.getElapsedTime();
 
@@ -164,7 +162,7 @@ const VoxelGroup: React.FC = () => {
       groupRef.current.position.y = Math.sin(time * 0.3) * 0.05;
 
       // Mouse interaction
-      const { x, y } = mouseRef.current;
+      const { x, y } = pointer;
       groupRef.current.rotation.y +=
         (x * 0.5 - groupRef.current.rotation.y) * 0.05;
       groupRef.current.rotation.x +=
@@ -174,7 +172,9 @@ const VoxelGroup: React.FC = () => {
   });
 
   // Random spinning logic
-  const [spinningVoxelIndex, setSpinningVoxelIndex] = useState<number | null>(null);
+  const [spinningVoxelIndex, setSpinningVoxelIndex] = useState<number | null>(
+    null,
+  );
 
   useEffect(() => {
     if (voxels.length === 0) return;
@@ -367,6 +367,8 @@ const Scene: React.FC = () => {
       <Canvas
         camera={{ position: [0, 0, 11], fov: 45 }}
         className="w-full h-full cursor-grab active:cursor-grabbing"
+        dpr={[1, 2]}
+        gl={{ powerPreference: "high-performance", antialias: false }}
       >
         <ambientLight intensity={0.4} />
         <directionalLight position={[5, 10, 5]} intensity={1.5} />
@@ -402,6 +404,8 @@ const Scene: React.FC = () => {
             scale={20}
             blur={2}
             far={4.5}
+            resolution={256}
+            frames={1}
           />
         </group>
 
