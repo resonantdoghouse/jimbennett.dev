@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const ParallaxStars: React.FC = () => {
@@ -10,21 +10,26 @@ const ParallaxStars: React.FC = () => {
   const yMidground = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const yForeground = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
 
-  const [stars, setStars] = useState<
-    { id: number; top: string; left: string; size: number; opacity: number }[]
-  >([]);
-
-  useEffect(() => {
+  const [stars] = useState<
+    {
+      id: number;
+      top: string;
+      left: string;
+      size: number;
+      opacity: number;
+      duration: number;
+    }[]
+  >(() =>
     // Generate static stars once on mount so they don't jump around on re-renders
-    const newStars = Array.from({ length: 150 }).map((_, i) => ({
+    Array.from({ length: 150 }).map((_, i) => ({
       id: i,
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
       size: Math.random() * 2 + 1, // 1px to 3px
       opacity: Math.random() * 0.8 + 0.2, // 0.2 to 1.0
-    }));
-    setStars(newStars);
-  }, []);
+      duration: Math.random() * 3 + 2,
+    })),
+  );
 
   return (
     <div
@@ -43,7 +48,7 @@ const ParallaxStars: React.FC = () => {
               width: `${star.size * 0.5}px`,
               height: `${star.size * 0.5}px`,
               opacity: star.opacity * 0.5,
-              animationDuration: `${Math.random() * 3 + 2}s`,
+              animationDuration: `${star.duration}s`,
             }}
           />
         ))}
@@ -61,7 +66,7 @@ const ParallaxStars: React.FC = () => {
               width: `${star.size * 0.8}px`,
               height: `${star.size * 0.8}px`,
               opacity: star.opacity * 0.8,
-              animationDuration: `${Math.random() * 3 + 2}s`,
+              animationDuration: `${star.duration}s`,
             }}
           />
         ))}
@@ -79,7 +84,7 @@ const ParallaxStars: React.FC = () => {
               width: `${star.size}px`,
               height: `${star.size}px`,
               opacity: star.opacity,
-              animationDuration: `${Math.random() * 3 + 2}s`,
+              animationDuration: `${star.duration}s`,
             }}
           />
         ))}
