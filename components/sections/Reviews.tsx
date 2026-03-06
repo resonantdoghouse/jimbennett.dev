@@ -89,7 +89,7 @@ const Reviews: React.FC = () => {
       <div className="relative z-10 max-w-[1100px] mx-auto px-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
           {currentReviews.map((review, index) => (
-            <motion.div
+            <motion.article
               key={`${review.id}-${index}`}
               className="bg-card border border-border p-6 rounded relative transition-transform hover:-translate-y-2 hover:border-accent hover:shadow-[0_0_15px_rgba(99,102,241,0.2)] cursor-default flex flex-col justify-between h-full"
               onMouseEnter={() => playSound("hover")}
@@ -119,7 +119,7 @@ const Reviews: React.FC = () => {
                 </span>
                 <div className="w-8 h-1 bg-accent-secondary opacity-50 pixel-clip"></div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 

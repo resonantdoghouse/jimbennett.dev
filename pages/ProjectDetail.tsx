@@ -20,7 +20,7 @@ const ProjectDetail: React.FC = () => {
   if (!project) return null;
 
   return (
-    <div className="min-h-screen bg-background text-text-main pb-20 pt-20 mt-12 px-5">
+    <article className="min-h-screen bg-background text-text-main pb-20 pt-20 mt-12 px-5">
       <div className="max-w-[1100px] mx-auto">
         {/* Header / Nav Back */}
         <Link
@@ -142,7 +142,7 @@ const ProjectDetail: React.FC = () => {
           </aside>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

@@ -24,7 +24,7 @@ const QuestItem: React.FC<QuestItemProps> = ({
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <motion.div
+    <motion.article
       className="bg-card border border-border p-6 flex gap-5 relative overflow-hidden transition-all duration-300 hover:border-accent-secondary hover:translate-x-2 group"
       onMouseEnter={onHover}
       initial={
@@ -52,7 +52,7 @@ const QuestItem: React.FC<QuestItemProps> = ({
         </span>
         <p className="text-text-muted">{desc}</p>
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 

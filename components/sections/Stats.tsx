@@ -42,7 +42,11 @@ const Stats: React.FC = () => {
   const { playSound } = useSound();
 
   return (
-    <div className="bg-card border-t-4 border-b-4 border-accent py-10 -mt-12 relative z-20 shadow-lg">
+    <section
+      id="stats"
+      aria-label="Key Statistics"
+      className="bg-card border-t-4 border-b-4 border-accent py-10 -mt-12 relative z-20 shadow-lg"
+    >
       <div className="max-w-[1100px] mx-auto px-5">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 divide-y md:divide-y-0 md:divide-x divide-border">
           <StatItem
@@ -77,7 +81,7 @@ const Stats: React.FC = () => {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
