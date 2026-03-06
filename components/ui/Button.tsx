@@ -2,15 +2,14 @@ import React from "react";
 import { useSound } from "../../hooks/useSound";
 import { SoundType } from "../../types";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<
-  HTMLButtonElement | HTMLAnchorElement
-> {
-  children: React.ReactNode;
-  as?: "button" | "a";
-  href?: string;
-  soundType?: SoundType;
-  variant?: "primary" | "icon";
-}
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    children: React.ReactNode;
+    as?: "button" | "a";
+    href?: string;
+    soundType?: SoundType;
+    variant?: "primary" | "icon";
+  };
 
 const Button: React.FC<ButtonProps> = ({
   children,
@@ -28,10 +27,17 @@ const Button: React.FC<ButtonProps> = ({
 
   const handleClick = (e: React.MouseEvent) => {
     playSound(soundType);
-    if (props.onClick)
-      props.onClick(
-        e as React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
-      );
+    if (props.onClick) {
+      if (as === "a") {
+        (props.onClick as React.MouseEventHandler<HTMLAnchorElement>)(
+          e as React.MouseEvent<HTMLAnchorElement>,
+        );
+      } else {
+        (props.onClick as React.MouseEventHandler<HTMLButtonElement>)(
+          e as React.MouseEvent<HTMLButtonElement>,
+        );
+      }
+    }
   };
 
   const baseStyles =

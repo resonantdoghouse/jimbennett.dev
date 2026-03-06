@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Volume2, VolumeX, Moon, Sun, Menu, X } from "lucide-react";
+import {
+  Volume2,
+  VolumeX,
+  Moon,
+  Sun,
+  Menu,
+  X,
+  Github,
+  Linkedin,
+  FileText,
+} from "lucide-react";
 import { useTheme } from "../../hooks/useTheme";
 import { useSound } from "../../hooks/useSound";
 import Button from "../ui/Button";
@@ -128,6 +138,36 @@ const Header: React.FC = () => {
 
           {/* Controls */}
           <div className="flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-2 mr-2 border-r border-border pr-3">
+              <a
+                href="https://github.com/resonantdoghouse"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-text-muted hover:text-accent transition-colors"
+                aria-label="GitHub Profile"
+              >
+                <Github size={18} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/jim-bennett/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-text-muted hover:text-accent transition-colors"
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin size={18} />
+              </a>
+              <a
+                href="/assets/Jim_Bennett_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-text-muted hover:text-accent transition-colors"
+                aria-label="Download Resume (PDF)"
+              >
+                <FileText size={18} />
+              </a>
+            </div>
+
             <Button
               variant="icon"
               onClick={toggleSound}
@@ -204,6 +244,35 @@ const Header: React.FC = () => {
           >
             Co-op (Contact)
           </NavLink>
+          <div className="flex gap-4 pt-4 mt-2 border-t border-border justify-center">
+            <a
+              href="https://github.com/resonantdoghouse"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-text-muted hover:text-accent transition-colors"
+              aria-label="GitHub Profile"
+            >
+              <Github size={24} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jim-bennett/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-text-muted hover:text-accent transition-colors"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin size={24} />
+            </a>
+            <a
+              href="/assets/Jim_Bennett_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-text-muted hover:text-accent transition-colors"
+              aria-label="Download Resume (PDF)"
+            >
+              <FileText size={24} />
+            </a>
+          </div>
         </div>
       )}
     </header>

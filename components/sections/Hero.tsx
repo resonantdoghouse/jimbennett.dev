@@ -2,6 +2,7 @@ import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Scene from "../3d/VoxelAvatar";
 import Button from "../ui/Button";
+import { Download } from "lucide-react";
 
 const Hero: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
@@ -79,10 +80,21 @@ const Hero: React.FC = () => {
                 HIRE ME
               </Button>
               <Button
+                href="/assets/Jim_Bennett_Resume.pdf"
+                as="a"
+                variant="icon"
+                className="w-auto px-6 border-accent text-accent hover:bg-accent hover:text-white flex items-center gap-2"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Download size={16} />
+                RESUME
+              </Button>
+              <Button
                 href="#levels"
                 as="a"
                 variant="icon"
-                className="w-auto px-6 border-accent text-accent hover:bg-accent hover:text-white"
+                className="w-auto px-6 border-border text-text-muted hover:border-accent hover:text-accent"
               >
                 VIEW PORTFOLIO
               </Button>
