@@ -2,7 +2,7 @@ import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useSound } from "../../hooks/useSound";
 
-interface QuestItemProps {
+interface WorkItemProps {
   icon: string;
   title: string;
   company: string;
@@ -12,7 +12,7 @@ interface QuestItemProps {
   onHover: () => void;
 }
 
-const QuestItem: React.FC<QuestItemProps> = ({
+const WorkItem: React.FC<WorkItemProps> = ({
   icon,
   title,
   company,
@@ -56,18 +56,18 @@ const QuestItem: React.FC<QuestItemProps> = ({
   );
 };
 
-const Quests: React.FC = () => {
+const Work: React.FC = () => {
   const { playSound } = useSound();
 
   return (
-    <section id="quests" className="py-24 relative">
+    <section id="work" className="py-24 relative">
       <div className="max-w-[1100px] mx-auto px-5">
         <h2 className="text-4xl font-extrabold mb-10 flex items-center gap-4 pixel-underline">
-          Quests
+          Work Experience
         </h2>
 
         <div className="flex flex-col gap-6">
-          <QuestItem
+          <WorkItem
             icon="🎓"
             title="Lead Educator & Team Lead, Software Engineering Bootcamp"
             company="BrainStation"
@@ -76,7 +76,7 @@ const Quests: React.FC = () => {
             index={0}
             onHover={() => playSound("subtle_blip")}
           />
-          <QuestItem
+          <WorkItem
             icon="🚀"
             title="Lead Web Development Instructor"
             company="Red Academy"
@@ -85,7 +85,7 @@ const Quests: React.FC = () => {
             index={1}
             onHover={() => playSound("plop")}
           />
-          <QuestItem
+          <WorkItem
             icon="🛠️"
             title="Web Developer & Project Manager"
             company="Freelance - Build Creative Websites"
@@ -94,7 +94,7 @@ const Quests: React.FC = () => {
             index={2}
             onHover={() => playSound("bell")}
           />
-          <QuestItem
+          <WorkItem
             icon="🎨"
             title="Front End Web Developer"
             company="Advisor Websites"
@@ -103,7 +103,7 @@ const Quests: React.FC = () => {
             index={3}
             onHover={() => playSound("chime")}
           />
-          <QuestItem
+          <WorkItem
             icon="💻"
             title="Web Developer"
             company="Qwick Media"
@@ -112,7 +112,7 @@ const Quests: React.FC = () => {
             index={4}
             onHover={() => playSound("subtle_blip")}
           />
-          <QuestItem
+          <WorkItem
             icon="📈"
             title="Web Developer, Designer & SEO Strategist"
             company="Vancouver Media Group"
@@ -127,4 +127,4 @@ const Quests: React.FC = () => {
   );
 };
 
-export default Quests;
+export default Work;

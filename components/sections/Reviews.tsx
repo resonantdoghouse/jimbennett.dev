@@ -67,7 +67,7 @@ const Reviews: React.FC = () => {
         <div className="flex items-center gap-3 sm:gap-4 mb-8">
           <div className="w-8 sm:w-12 h-1 bg-accent pixel-clip hidden sm:block"></div>
           <h2 className="font-pixel text-2xl md:text-3xl text-accent whitespace-nowrap">
-            Reputation
+            Reviews
           </h2>
           <div
             className="group font-mono text-sm md:text-base text-text-main flex items-center gap-1.5 bg-card/80 border border-border px-3 py-1 rounded whitespace-nowrap hover:border-accent/50 transition-colors cursor-default"
@@ -81,8 +81,7 @@ const Reviews: React.FC = () => {
           <div className="flex-1 h-px bg-border"></div>
         </div>
         <p className="text-text-muted font-mono max-w-2xl text-sm md:text-base">
-          [System log: Testimonials verified. Source: Anonymous students.
-          Average educator feedback rating: 4.8/5.]
+          Feedback from colleagues and students highlighting my dedication to quality and mentorship.
         </p>
       </div>
 

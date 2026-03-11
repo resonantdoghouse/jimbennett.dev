@@ -22,10 +22,10 @@ const Contact: React.FC = () => {
         transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
       >
         <span className="font-mono text-accent text-sm mb-4 block">
-          AVAILABLE FOR CO-OP
+          GET IN TOUCH
         </span>
         <h2 className="text-4xl font-extrabold mb-6 pixel-underline inline-flex items-center gap-4">
-          Ready for Co-op
+          Ready to Connect
         </h2>
         <p className="text-xl mb-10 text-text-muted leading-relaxed">
           I'm currently looking for new opportunities in Full Stack Development.

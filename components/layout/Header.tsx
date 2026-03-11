@@ -92,24 +92,24 @@ const Header: React.FC = () => {
           <ul className="hidden md:flex gap-4 lg:gap-8 items-center list-none ml-2 lg:ml-0 flex-1 justify-center">
             <li className="text-xs lg:text-sm">
               <NavLink
-                href="#quests"
+                href="#work"
                 onHover={handleHover}
                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
-                  handleNavClick(e, "#quests")
+                  handleNavClick(e, "#work")
                 }
               >
-                Quests (Work)
+                Work
               </NavLink>
             </li>
             <li className="text-xs lg:text-sm">
               <NavLink
-                href="#levels"
+                href="#projects"
                 onHover={handleHover}
                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
-                  handleNavClick(e, "#levels")
+                  handleNavClick(e, "#projects")
                 }
               >
-                Levels (Projects)
+                Projects
               </NavLink>
             </li>
             <li className="text-xs lg:text-sm">
@@ -120,7 +120,7 @@ const Header: React.FC = () => {
                   handleNavClick(e, "#reviews")
                 }
               >
-                Reputation (Reviews)
+                Reviews
               </NavLink>
             </li>
             <li className="text-xs lg:text-sm">
@@ -131,7 +131,7 @@ const Header: React.FC = () => {
                   handleNavClick(e, "#contact")
                 }
               >
-                Co-op (Contact)
+                Contact
               </NavLink>
             </li>
           </ul>
@@ -209,22 +209,22 @@ const Header: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border p-5 flex flex-col gap-4 shadow-lg animate-in slide-in-from-top-2">
           <NavLink
-            href="#quests"
+            href="#work"
             onHover={handleHover}
             onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
-              handleNavClick(e, "#quests")
+              handleNavClick(e, "#work")
             }
           >
-            Quests (Work)
+            Work
           </NavLink>
           <NavLink
-            href="#levels"
+            href="#projects"
             onHover={handleHover}
             onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
-              handleNavClick(e, "#levels")
+              handleNavClick(e, "#projects")
             }
           >
-            Levels (Projects)
+            Projects
           </NavLink>
           <NavLink
             href="#reviews"
@@ -233,7 +233,7 @@ const Header: React.FC = () => {
               handleNavClick(e, "#reviews")
             }
           >
-            Reputation (Reviews)
+            Reviews
           </NavLink>
           <NavLink
             href="#contact"
@@ -242,7 +242,7 @@ const Header: React.FC = () => {
               handleNavClick(e, "#contact")
             }
           >
-            Co-op (Contact)
+            Contact
           </NavLink>
           <div className="flex gap-4 pt-4 mt-2 border-t border-border justify-center">
             <a

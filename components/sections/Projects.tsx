@@ -103,16 +103,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   );
 };
 
-const Levels: React.FC = () => {
+const Projects: React.FC = () => {
   const { playSound } = useSound();
 
   return (
-    <section id="levels" className="py-24 relative bg-background/50">
+    <section id="projects" className="py-24 relative bg-background/50">
       <div className="max-w-[1100px] mx-auto px-5">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div>
             <h2 className="text-4xl font-extrabold mb-4 flex items-center gap-4 pixel-underline">
-              Portfolio
+              Projects
             </h2>
             <p className="text-text-muted max-w-xl">
               Selected works demonstrating proficiency in creative coding, 3D
@@ -144,4 +144,4 @@ const Levels: React.FC = () => {
   );
 };
 
-export default Levels;
+export default Projects;
