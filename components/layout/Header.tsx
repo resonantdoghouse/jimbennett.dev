@@ -89,8 +89,8 @@ const Header: React.FC = () => {
           </a>
 
           {/* Desktop Nav */}
-          <ul className="hidden md:flex gap-4 lg:gap-8 items-center list-none ml-2 lg:ml-0 flex-1 justify-center">
-            <li className="text-xs lg:text-sm">
+          <ul className="hidden md:flex gap-3 lg:gap-8 items-center list-none ml-2 lg:ml-0 flex-1 justify-center flex-wrap">
+            <li className="text-xs lg:text-sm whitespace-nowrap">
               <NavLink
                 href="#work"
                 onHover={handleHover}
@@ -101,7 +101,7 @@ const Header: React.FC = () => {
                 Work
               </NavLink>
             </li>
-            <li className="text-xs lg:text-sm">
+            <li className="text-xs lg:text-sm whitespace-nowrap">
               <NavLink
                 href="#projects"
                 onHover={handleHover}
@@ -112,7 +112,7 @@ const Header: React.FC = () => {
                 Projects
               </NavLink>
             </li>
-            <li className="text-xs lg:text-sm">
+            <li className="text-xs lg:text-sm whitespace-nowrap">
               <NavLink
                 href="#reviews"
                 onHover={handleHover}
@@ -123,7 +123,7 @@ const Header: React.FC = () => {
                 Reviews
               </NavLink>
             </li>
-            <li className="text-xs lg:text-sm">
+            <li className="text-xs lg:text-sm whitespace-nowrap">
               <NavLink
                 href="#contact"
                 onHover={handleHover}
@@ -137,8 +137,8 @@ const Header: React.FC = () => {
           </ul>
 
           {/* Controls */}
-          <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center gap-2 mr-2 border-r border-border pr-3">
+          <div className="flex items-center gap-2 lg:gap-3 shrink-0">
+            <div className="hidden md:flex items-center gap-1 lg:gap-2 mr-1 lg:mr-2 border-r border-border pr-2 lg:pr-3">
               <a
                 href="https://github.com/resonantdoghouse"
                 target="_blank"
