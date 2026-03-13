@@ -91,7 +91,7 @@ const Hero: React.FC = () => {
                 RESUME
               </Button>
               <Button
-                href="#levels"
+                href="#projects"
                 as="a"
                 variant="icon"
                 className="w-auto px-6 border-border text-text-muted hover:border-accent hover:text-accent"

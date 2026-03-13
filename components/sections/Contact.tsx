@@ -32,7 +32,7 @@ const Contact: React.FC = () => {
           If you have a role that fits my stack, let's connect.
         </p>
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          <Button as="a" href="mailto:jim.webdesign@gmail.com" soundType="coin">
+          <Button as="a" href="mailto:jim.bennett.dev@gmail.com" soundType="coin">
             SEND EMAIL
           </Button>
           <Button
